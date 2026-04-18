@@ -47,13 +47,13 @@ region = Rect2(48, 80, 16, 16)
 atlas = ExtResource("2_xnrtv")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q511d"]
-atlas = ExtResource("2_xnrtv")
-region = Rect2(0, 0, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_sesc6"]
 atlas = ExtResource("2_xnrtv")
 region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q511d"]
+atlas = ExtResource("2_xnrtv")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j4v68"]
 atlas = ExtResource("2_xnrtv")
@@ -67,13 +67,13 @@ region = Rect2(64, 0, 16, 16)
 atlas = ExtResource("2_xnrtv")
 region = Rect2(32, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v8mp5"]
-atlas = ExtResource("2_xnrtv")
-region = Rect2(0, 16, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_x3otj"]
 atlas = ExtResource("2_xnrtv")
 region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8mp5"]
+atlas = ExtResource("2_xnrtv")
+region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_byggb"]
 atlas = ExtResource("2_xnrtv")
@@ -87,13 +87,13 @@ region = Rect2(64, 16, 16, 16)
 atlas = ExtResource("2_xnrtv")
 region = Rect2(32, 48, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u5cud"]
-atlas = ExtResource("2_xnrtv")
-region = Rect2(0, 48, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_uo6is"]
 atlas = ExtResource("2_xnrtv")
 region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5cud"]
+atlas = ExtResource("2_xnrtv")
+region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_beanm"]
 atlas = ExtResource("2_xnrtv")
@@ -175,10 +175,10 @@ animations = [{
 "texture": SubResource("AtlasTexture_lvr46")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q511d")
+"texture": SubResource("AtlasTexture_sesc6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sesc6")
+"texture": SubResource("AtlasTexture_q511d")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lvr46")
@@ -189,19 +189,19 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xjtnj")
 }],
-"loop": false,
+"loop": true,
 "name": &"walk_down",
-"speed": 3.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u6h5u")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v8mp5")
+"texture": SubResource("AtlasTexture_x3otj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x3otj")
+"texture": SubResource("AtlasTexture_v8mp5")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u6h5u")
@@ -212,19 +212,22 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gug2c")
 }],
-"loop": false,
+"loop": true,
 "name": &"walk_left",
-"speed": 3.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ptrtf")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_uo6is")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_u5cud")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uo6is")
+"texture": SubResource("AtlasTexture_ptrtf")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_beanm")
@@ -232,9 +235,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5jenv")
 }],
-"loop": false,
+"loop": true,
 "name": &"walk_right",
-"speed": 3.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -255,27 +258,30 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rhh1f")
 }],
-"loop": false,
+"loop": true,
 "name": &"walk_up",
-"speed": 3.0
+"speed": 15.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lolo"]
-size = Vector2(14, 14)
+size = Vector2(14, 13)
 
 [node name="Lolo" type="CharacterBody2D" unique_id=1744060228]
 collision_layer = 2
 script = ExtResource("1_xnrtv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1067563436]
-position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_mfqes")
 animation = &"walk_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=420602305]
-position = Vector2(8, 8)
+visible = false
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_lolo")
 
 [node name="IdleTimer" type="Timer" parent="." unique_id=613154630]
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=19801723]
+target_position = Vector2(0, 8)
 
 [connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]

@@ -8,4 +8,4 @@
 [node name="Sala_Base" parent="." unique_id=49849981 instance=ExtResource("1_ehwls")]
 
 [node name="Lolo" parent="." unique_id=1744060228 instance=ExtResource("2_7ywai")]
-position = Vector2(68, 64)
+position = Vector2(56, 120)
