@@ -5,14 +5,18 @@ extends CharacterBody2D
 @export var idle_wait_time = 2.0 # Tempo para ficar idle
 
 @onready var anim = $AnimatedSprite2D
-@onready var idle_timer = $IdleTimer # Arraste o nó Timer para cá
+@onready var idle_timer = $IdleTimer # Arraste o nó Timer para 
+
+signal jogador_morreu
+
 @onready var ray = $RayCast2D # Referência ao laser de colisão
 
+var morreu:= false
 var is_moving = false
 var is_idle = false
 
 func _ready():
-	# Configura o timer via código caso não tenha feito no editor
+	jogador_morreu.connect(GameMaster._ao_morrer)
 	idle_timer.wait_time = idle_wait_time
 	idle_timer.one_shot = true
 	idle_timer.start() # Começa a contar assim que o jogo inicia
@@ -21,6 +25,8 @@ func _ready():
 func _physics_process(_delta):
 	if is_moving:
 		return
+	if morreu:
+		return
 	
 	var input_dir = Vector2.ZERO
 	if Input.is_action_pressed("ui_right"): input_dir = Vector2.RIGHT
@@ -28,6 +34,11 @@ func _physics_process(_delta):
 	elif Input.is_action_pressed("ui_down"): input_dir = Vector2.DOWN
 	elif Input.is_action_pressed("ui_up"): input_dir = Vector2.UP
 	
+	if Input.is_key_pressed(KEY_SHIFT):
+		morreu = true
+		is_moving = true    # trava movimento junto
+		anim.play("die")
+		return              # não processa mais nada 
 
 	if input_dir != Vector2.ZERO:
 		# Se o jogador apertar qualquer tecla, para o contador de Idle
@@ -81,3 +92,10 @@ func _on_idle_timer_timeout():
 		is_idle = true
 		anim.play("idle") # Certifique-se de ter uma animação chamada "idle"
 		print("Personagem ficou entediado e entrou em Idle")
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if anim.animation == "die":
+		morreu = false
+		is_moving = false
+		emit_signal("jogador_morreu")
