@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://hl330pdqq1jq"]
+
+[ext_resource type="Script" uid="uid://btjyk70n5jder" path="res://scenes/Inimigo/Snakey.gd" id="1_5f1gi"]
+[ext_resource type="Texture2D" uid="uid://v65ftuk5xc58" path="res://assets/sprites/Inimigos_S_fundo.png" id="2_0nbxm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nbxm"]
+atlas = ExtResource("2_0nbxm")
+region = Rect2(0, 297, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwqfs"]
+atlas = ExtResource("2_0nbxm")
+region = Rect2(33, 297, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5f1gi"]
+atlas = ExtResource("2_0nbxm")
+region = Rect2(165, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06pcj"]
+atlas = ExtResource("2_0nbxm")
+region = Rect2(0, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egdp2"]
+atlas = ExtResource("2_0nbxm")
+region = Rect2(99, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gylbn"]
+atlas = ExtResource("2_0nbxm")
+region = Rect2(66, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmlu6"]
+atlas = ExtResource("2_0nbxm")
+region = Rect2(132, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idvvq"]
+atlas = ExtResource("2_0nbxm")
+region = Rect2(33, 0, 33, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u5lw3"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_0nbxm")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_cwqfs")
+}],
+"loop": true,
+"name": &"Pearl",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5f1gi")
+}],
+"loop": true,
+"name": &"direita",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06pcj")
+}],
+"loop": true,
+"name": &"esquerda",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egdp2")
+}],
+"loop": true,
+"name": &"frente_direita",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gylbn")
+}],
+"loop": true,
+"name": &"frente_esquerda",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmlu6")
+}],
+"loop": true,
+"name": &"meio_direita",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idvvq")
+}],
+"loop": true,
+"name": &"meio_esquerda",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_awvx7"]
+size = Vector2(39, 37)
+
+[node name="Snakey" type="CharacterBody2D" unique_id=1775185825]
+collision_layer = 2
+script = ExtResource("1_5f1gi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1722524849]
+sprite_frames = SubResource("SpriteFrames_u5lw3")
+animation = &"frente_direita"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=776505633]
+texture_filter = 1
+shape = SubResource("RectangleShape2D_awvx7")

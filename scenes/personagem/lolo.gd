@@ -16,6 +16,7 @@ func _ready():
 	idle_timer.wait_time = idle_wait_time
 	idle_timer.one_shot = true
 	idle_timer.start() # Começa a contar assim que o jogo inicia
+	
 
 func _physics_process(_delta):
 	if is_moving:
