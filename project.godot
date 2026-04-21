@@ -14,6 +14,10 @@ config/name="lolo-remake"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameMaster="*uid://ps7nwjacn24o"
+
 [display]
 
 window/size/viewport_width=256
