@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c5ye7nyvbh5ej" path="res://scenes/game/sala_base.tscn" id="1_ehwls"]
 [ext_resource type="PackedScene" uid="uid://lolo00000001" path="res://scenes/personagem/lolo.tscn" id="2_7ywai"]
+[ext_resource type="PackedScene" uid="uid://hl330pdqq1jq" path="res://scenes/Inimigo/Snakey.tscn" id="3_7ywai"]
 
 [node name="LevelTeste" type="Node2D" unique_id=1014552644]
 
@@ -9,3 +10,10 @@
 
 [node name="Lolo" parent="." unique_id=1744060228 instance=ExtResource("2_7ywai")]
 position = Vector2(56, 120)
+
+[node name="Snakey" parent="." unique_id=1775185825 instance=ExtResource("3_7ywai")]
+texture_filter = 1
+position = Vector2(111.99999, 101)
+scale = Vector2(0.6, 0.6)
+collision_layer = 1
+collision_mask = 2
