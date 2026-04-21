@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://t7uy02e8tl5"]
+
+[ext_resource type="Script" uid="uid://run8t4dma156" path="res://scenes/game/coração.gd" id="1_5sbeb"]
+[ext_resource type="Texture2D" uid="uid://b4jg5o8yfd6uq" path="res://assets/sprites/tileset.png" id="1_5t0od"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sbeb"]
+atlas = ExtResource("1_5t0od")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0lej"]
+atlas = ExtResource("1_5t0od")
+region = Rect2(112, 96, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u2ium"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sbeb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0lej")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8aqd"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5t0od"]
+size = Vector2(8, 8)
+
+[node name="Coração" type="StaticBody2D" unique_id=1491238716 groups=["coletaveis"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_5sbeb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=313518733]
+sprite_frames = SubResource("SpriteFrames_u2ium")
+frame_progress = 0.37134948
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=192751260]
+shape = SubResource("RectangleShape2D_t8aqd")
+
+[node name="Sensor_Coletavel" type="Area2D" parent="." unique_id=124008837]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor_Coletavel" unique_id=1006565043]
+shape = SubResource("RectangleShape2D_5t0od")

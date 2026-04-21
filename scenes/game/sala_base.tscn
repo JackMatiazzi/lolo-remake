@@ -136,6 +136,14 @@ texture = ExtResource("1_wn6hh")
 33:0/0/terrain = 2
 33:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 33:0/0/terrains_peering_bit/left_side = 2
+5:4/0 = 0
+5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -2.2112265, -8, -2.2112265)
+2:3/0 = 0
+2:3/0/custom_data_0 = "bau"
+3:3/0 = 0
+4:4/0 = 0
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:4/0/custom_data_0 = "porta"
 
 [sub_resource type="TileSet" id="TileSet_8uiqw"]
 physics_layer_0/collision_layer = 1
@@ -147,6 +155,8 @@ terrain_set_0/terrain_1/name = "Centro"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 terrain_set_0/terrain_2/name = "Agua"
 terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
+custom_data_layer_0/name = "tipo"
+custom_data_layer_0/type = 4
 sources/1 = SubResource("TileSetAtlasSource_wn6hh")
 
 [node name="Sala_Base" type="TileMapLayer" unique_id=49849981]
