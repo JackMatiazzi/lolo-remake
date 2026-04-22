@@ -46,12 +46,26 @@ func _physics_process(_delta):
 		idle_timer.stop()
 		 
 		# --- VERIFICAÇÃO DE COLISÃO ANTES DE MOVER ---
-		if check_collision(input_dir):
-			# Se houver parede, apenas vira o personagem mas não move
-			update_animation(input_dir)
-			#anim.stop() # Ou mantém a animação de walk parada
-		else:
+		var obstaculo = check_collision(input_dir)
+		if obstaculo == null:
+			# Caminho livre, pode mover
 			move_in_grid(input_dir)
+		else:
+			# Bateu em algo! Vamos ver se é um bloco empurrável
+			if obstaculo.has_method("empurrar"):
+				if alinhado(obstaculo, input_dir):
+					# Tenta empurrar. Se o bloco retornar TRUE, ele moveu.
+					if obstaculo.empurrar(input_dir):
+						move_in_grid(input_dir) # Player move atrás do bloco
+					else:
+						# Bloco não pode mover (bateu em parede), apenas vira o player
+						update_animation(input_dir)
+				else:
+					# Não é bloco (é parede ou tilemap sólido), apenas vira o player
+					update_animation(input_dir)
+			else:
+				# Não é bloco (é parede ou tilemap sólido), apenas vira o player
+				update_animation(input_dir)
 	else:
 		if not is_idle:
 			anim.stop();
@@ -62,8 +76,21 @@ func check_collision(direction):
 	ray.target_position = direction * tile_size
 	# Força o RayCast a atualizar a posição imediatamente
 	ray.force_raycast_update()
-	# Retorna verdadeiro se o laser bater em algo (StaticBody2D, TileMap, etc)
-	return ray.is_colliding()
+	# Retorna se o laser bater em algo (StaticBody2D, TileMap, etc)
+	if ray.is_colliding():
+		return ray.get_collider()
+	return null
+	
+func alinhado(objeto, direcao_movimento) -> bool:
+	# Se movemos na horizontal (esquerda/direita), checamos se o Y é igual
+	if direcao_movimento.x != 0:
+		return abs(position.y - objeto.position.y) < 2.0 # Margem de erro de 2 pixels
+	
+	# Se movemos na vertical (cima/baixo), checamos se o X é igual
+	if direcao_movimento.y != 0:
+		return abs(position.x - objeto.position.x) < 2.0
+		
+	return false
 
 func move_in_grid(direction):
 	is_moving = true
@@ -99,3 +126,25 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		morreu = false
 		is_moving = false
 		emit_signal("jogador_morreu")
+
+func _on_sensor_area_entered(area: Area2D) -> void:
+	# 1. Procuramos a função 'coletar' na própria área ou no pai dela
+	var alvo = null
+	
+	if area.get_parent().has_method("coletar"):
+		alvo = area.get_parent()
+	
+	# 2. Se encontramos algo coletável, executamos a ação
+	if alvo:
+		fazer_coleta(alvo)
+		
+func fazer_coleta(objeto):
+	# Chamamos a função e recebemos o booleano (True se for tiro mágico, False se não)
+	var ganhou_tiro = objeto.coletar()
+	
+	if ganhou_tiro:
+		print("Poder de tiro ativado!")
+		# Aqui você ativaria a variável de tiro do seu Player
+	else:
+		# Se for o baú ou item comum, ele entra aqui.
+		print("Item coletado com sucesso.")

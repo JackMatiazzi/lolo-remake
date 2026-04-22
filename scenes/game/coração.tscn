@@ -44,6 +44,7 @@ frame_progress = 0.37134948
 shape = SubResource("RectangleShape2D_t8aqd")
 
 [node name="Sensor_Coletavel" type="Area2D" parent="." unique_id=124008837]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor_Coletavel" unique_id=1006565043]
 shape = SubResource("RectangleShape2D_5t0od")

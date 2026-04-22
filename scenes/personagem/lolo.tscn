@@ -266,7 +266,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lolo"]
 size = Vector2(14, 13)
 
-[node name="Lolo" type="CharacterBody2D" unique_id=1744060228]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xnrtv"]
+size = Vector2(8, 8)
+
+[node name="Lolo" type="CharacterBody2D" unique_id=1744060228 groups=["personagem"]]
 collision_layer = 2
 script = ExtResource("1_xnrtv")
 
@@ -283,5 +286,12 @@ shape = SubResource("RectangleShape2D_lolo")
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=19801723]
 target_position = Vector2(0, 8)
 
+[node name="Sensor" type="Area2D" parent="." unique_id=1318291770]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor" unique_id=1224413632]
+shape = SubResource("RectangleShape2D_xnrtv")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
+[connection signal="area_entered" from="Sensor" to="." method="_on_sensor_area_entered"]
