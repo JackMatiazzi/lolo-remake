@@ -45,6 +45,7 @@ shape = SubResource("RectangleShape2D_ymn1g")
 
 [node name="Sensor_Coletavel" type="Area2D" parent="." unique_id=51844097]
 position = Vector2(0, 8)
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor_Coletavel" unique_id=1573964105]
 shape = SubResource("RectangleShape2D_ciiog")
