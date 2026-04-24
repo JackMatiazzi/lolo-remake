@@ -4,9 +4,8 @@ extends CanvasLayer
 @onready var label_disparos = $VBoxContainer/LabelDisparos
 
 func _ready():
-	add_to_group("hud")
 	label_vidas.text = str(GameMaster.vida)
-	label_disparos.text = str(GameMaster.disparos)
+	label_disparos.text = "0"
 
 func set_vidas(n: int):
 	label_vidas.text = str(n)

@@ -1,49 +1,57 @@
 extends CharacterBody2D
 
+# --- VARIÁVEIS ---
 @export var tile_size = 8
 @export var walk_speed = 0.1
-@export var idle_wait_time = 2.0 # Tempo para ficar idle
+@export var tiros_disponiveis = 0: 
+	set(valor):
+		tiros_disponiveis = valor
+		disparos_atualizados.emit(tiros_disponiveis)
 
 @onready var anim = $AnimatedSprite2D
-@onready var idle_timer = $IdleTimer # Arraste o nó Timer para 
+@onready var idle_timer = $IdleTimer
+@onready var ray = $RayCast2D
 
+signal disparos_atualizados(quantidade)
 signal jogador_morreu
 
-@onready var ray = $RayCast2D # Referência ao laser de colisão
-
-var morreu:= false
+var ultima_direcao = Vector2.DOWN
+var cena_tiro = preload("res://scenes/personagem/tiro_magico.tscn")
+var morreu = false
+var venceu = false
 var is_moving = false
 var is_idle = false
 
-func _ready():
-	jogador_morreu.connect(GameMaster._ao_morrer)
-	idle_timer.wait_time = idle_wait_time
-	idle_timer.one_shot = true
-	idle_timer.start() # Começa a contar assim que o jogo inicia
-	
-
 func _physics_process(_delta):
+	# 1. PRIORIDADE MÁXIMA: MORTE
+	# Se morreu ou venceu, nada mais importa.
+	if morreu or venceu:
+		return
+	
+	# 2. SEGUNDA PRIORIDADE: TIRO
+	# Colocamos aqui para que ele possa atirar MESMO EM MOVIMENTO.
+	# Usamos 'just_pressed' para evitar gasto infinito de munição.
+	if Input.is_action_just_pressed("ui_accept"):
+		atirar()
+	
+	# 3. COMANDO DE DEBUG/MORTE
+	if Input.is_key_pressed(KEY_SHIFT):
+		executar_morte()
+		return
+	
+	# 4. BLOQUEIO DE MOVIMENTO
+	# Agora o 'return' só impede novos comandos de andar, mas não impede o tiro acima.
 	if is_moving:
 		return
-	if morreu:
-		return
+		
+	# 5. PROCESSAMENTO DE DIREÇÃO
+	var input_dir = get_input_direction()
 	
-	var input_dir = Vector2.ZERO
-	if Input.is_action_pressed("ui_right"): input_dir = Vector2.RIGHT
-	elif Input.is_action_pressed("ui_left"): input_dir = Vector2.LEFT
-	elif Input.is_action_pressed("ui_down"): input_dir = Vector2.DOWN
-	elif Input.is_action_pressed("ui_up"): input_dir = Vector2.UP
-	
-	if Input.is_key_pressed(KEY_SHIFT):
-		morreu = true
-		is_moving = true    # trava movimento junto
-		anim.play("die")
-		return              # não processa mais nada 
-
 	if input_dir != Vector2.ZERO:
 		# Se o jogador apertar qualquer tecla, para o contador de Idle
 		is_idle = false
 		idle_timer.stop()
+		ultima_direcao = input_dir
 		 
 		# --- VERIFICAÇÃO DE COLISÃO ANTES DE MOVER ---
 		var obstaculo = check_collision(input_dir)
@@ -52,34 +60,43 @@ func _physics_process(_delta):
 			move_in_grid(input_dir)
 		else:
 			# Bateu em algo! Vamos ver se é um bloco empurrável
-			if obstaculo.has_method("empurrar"):
-				if alinhado(obstaculo, input_dir):
-					# Tenta empurrar. Se o bloco retornar TRUE, ele moveu.
-					if obstaculo.empurrar(input_dir):
-						move_in_grid(input_dir) # Player move atrás do bloco
-					else:
-						# Bloco não pode mover (bateu em parede), apenas vira o player
-						update_animation(input_dir)
-				else:
-					# Não é bloco (é parede ou tilemap sólido), apenas vira o player
-					update_animation(input_dir)
-			else:
-				# Não é bloco (é parede ou tilemap sólido), apenas vira o player
-				update_animation(input_dir)
+			processar_colisao(obstaculo, input_dir)
 	else:
 		if not is_idle:
 			anim.stop();
 
-# Função para checar se o próximo tile está ocupado
+# --- FUNÇÕES AUXILIARES DE INPUT ---
+
+func get_input_direction() -> Vector2:
+	# O get_vector lê (esquerda, direita, cima, baixo)
+	# Ele retorna um Vector2 que já lida com teclas opostas se anulando
+	var input = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	
+	# Em jogos de grade (Sokoban), não podemos andar na diagonal.
+	# Então, priorizamos o eixo com maior "força" de aperto:
+	if abs(input.x) > abs(input.y):
+		return Vector2(sign(input.x), 0) # Retorna apenas Direita ou Esquerda
+	elif abs(input.y) > 0:
+		return Vector2(0, sign(input.y)) # Retorna apenas Cima ou Baixo
+		
+	return Vector2.ZERO
+
+# --- LOGICA DE MUNDO ---
+
 func check_collision(direction):
-	# Aponta o RayCast para a direção do movimento
 	ray.target_position = direction * tile_size
-	# Força o RayCast a atualizar a posição imediatamente
 	ray.force_raycast_update()
-	# Retorna se o laser bater em algo (StaticBody2D, TileMap, etc)
-	if ray.is_colliding():
-		return ray.get_collider()
-	return null
+	return ray.get_collider() if ray.is_colliding() else null
+
+func processar_colisao(obstaculo, input_dir):
+	# Encapsulamos a lógica do bloco para limpar o physics_process
+	if obstaculo.has_method("empurrar") and alinhado(obstaculo, input_dir):
+		if obstaculo.empurrar(input_dir):
+			move_in_grid(input_dir)
+		else:
+			update_animation(input_dir)
+	else:
+		update_animation(input_dir)
 	
 func alinhado(objeto, direcao_movimento) -> bool:
 	# Se movemos na horizontal (esquerda/direita), checamos se o Y é igual
@@ -112,39 +129,50 @@ func update_animation(direction):
 	elif direction == Vector2.DOWN: anim.play("walk_down")
 	elif direction == Vector2.UP: anim.play("walk_up")
 	
-# --- CONECTE O SINAL 'timeout()' DO IDLE_TIMER A ESTA FUNÇÃO ---
-func _on_idle_timer_timeout():
-	# Só toca o idle se ele não estiver no meio de um movimento
-	if not is_moving:
-		is_idle = true
-		anim.play("idle") # Certifique-se de ter uma animação chamada "idle"
-		print("Personagem ficou entediado e entrou em Idle")
+# --- AÇÕES E EVENTOS ---
 
+func atirar():
+	# Só atira se tiver munição e não estiver na animação de morte
+	if tiros_disponiveis > 0 and not morreu:
+		tiros_disponiveis -= 1
+		is_idle = false # Atirar quebra o estado de idle
+		update_animation(ultima_direcao)
+		
+		var tiro_instancia = cena_tiro.instantiate()
+		tiro_instancia.position = self.position
+		tiro_instancia.set_direcao(ultima_direcao)
+		get_tree().current_scene.add_child(tiro_instancia)
+	else:
+		print("Sem munição!")
+
+func executar_morte():
+	morreu = true
+	is_moving = true
+	anim.play("die")
+
+func executar_vitoria():
+	venceu = true
+	is_moving = true
+	anim.play("victory")    # Toca a animação de comemoração
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if anim.animation == "die":
-		morreu = false
-		is_moving = false
-		emit_signal("jogador_morreu")
+		jogador_morreu.emit()
+	# Quando a dança da vitória acabar:
+	elif anim.animation == "victory":
+		#GameMaster.proxima_fase() # O Player avisa que pode mudar de cena
+		get_tree().quit()
+
+func _on_idle_timer_timeout():
+	if not is_moving:
+		is_idle = true
+		anim.play("idle")
 
 func _on_sensor_area_entered(area: Area2D) -> void:
-	# 1. Procuramos a função 'coletar' na própria área ou no pai dela
 	var alvo = null
-	
 	if area.get_parent().has_method("coletar"):
 		alvo = area.get_parent()
-	
-	# 2. Se encontramos algo coletável, executamos a ação
 	if alvo:
-		fazer_coleta(alvo)
-		
-func fazer_coleta(objeto):
-	# Chamamos a função e recebemos o booleano (True se for tiro mágico, False se não)
-	var ganhou_tiro = objeto.coletar()
-	
-	if ganhou_tiro:
-		print("Poder de tiro ativado!")
-		# Aqui você ativaria a variável de tiro do seu Player
-	else:
-		# Se for o baú ou item comum, ele entra aqui.
-		print("Item coletado com sucesso.")
+		var ganhou_tiro = alvo.coletar()
+		if ganhou_tiro:
+			tiros_disponiveis += 2

@@ -29,7 +29,7 @@ animations = [{
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ciiog"]
-size = Vector2(8, 8)
+size = Vector2(5, 5)
 
 [node name="Bau_Aberto" type="StaticBody2D" unique_id=1249629688]
 collision_layer = 2
@@ -48,4 +48,5 @@ position = Vector2(0, 8)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor_Coletavel" unique_id=1573964105]
+position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_ciiog")

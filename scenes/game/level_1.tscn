@@ -6,6 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://lolo00000001" path="res://scenes/personagem/lolo.tscn" id="2_dn67k"]
 [ext_resource type="PackedScene" uid="uid://72lrog373q47" path="res://scenes/game/bau_aberto.tscn" id="2_t3e63"]
 [ext_resource type="PackedScene" uid="uid://bpj8l2dmxlhw5" path="res://scenes/game/bloco_esmeralda.tscn" id="3_7m5v4"]
+[ext_resource type="PackedScene" uid="uid://hl330pdqq1jq" path="res://scenes/Inimigo/Snakey.tscn" id="7_iu0x6"]
+[ext_resource type="PackedScene" uid="uid://b0qby3c6tvior" path="res://scenes/ui/hud.tscn" id="7_iy5hv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iy5hv"]
+size = Vector2(16, 8)
 
 [node name="Level_1" type="Node2D" unique_id=1078446643]
 script = ExtResource("1_rf41o")
@@ -20,11 +25,28 @@ magic_shot = true
 [node name="Coração2" parent="." unique_id=2075618661 instance=ExtResource("2_76t5s")]
 position = Vector2(88, 56)
 
-[node name="Bau_aberto" parent="." unique_id=1249629688 instance=ExtResource("2_t3e63")]
+[node name="Bau_Aberto" parent="." unique_id=1249629688 instance=ExtResource("2_t3e63")]
 position = Vector2(88, 176)
 
 [node name="Bloco_Esmeralda" parent="." unique_id=1984467136 instance=ExtResource("3_7m5v4")]
+visible = false
 position = Vector2(120, 120)
 
 [node name="Lolo" parent="." unique_id=1744060228 instance=ExtResource("2_dn67k")]
 position = Vector2(24, 104)
+
+[node name="Snakey" parent="." unique_id=1775185825 instance=ExtResource("7_iu0x6")]
+position = Vector2(120, 112)
+
+[node name="Hud" parent="." unique_id=1198646795 instance=ExtResource("7_iy5hv")]
+offset = Vector2(208, 0)
+transform = Transform2D(1, 0, 0, 1, 208, 0)
+
+[node name="Sensor_Level" type="Area2D" parent="." unique_id=1548015729]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor_Level" unique_id=725213186]
+position = Vector2(120, 20)
+shape = SubResource("RectangleShape2D_iy5hv")
+
+[connection signal="body_entered" from="Sensor_Level" to="." method="_on_sensor_level_body_entered"]
