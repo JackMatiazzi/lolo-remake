@@ -29,7 +29,7 @@ animations = [{
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5t0od"]
-size = Vector2(8, 8)
+size = Vector2(4, 4)
 
 [node name="Coração" type="StaticBody2D" unique_id=1491238716 groups=["coletaveis"]]
 collision_layer = 2

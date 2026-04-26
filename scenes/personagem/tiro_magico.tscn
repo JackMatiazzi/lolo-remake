@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://bhovmyxiru4ee"]
+
+[ext_resource type="Script" uid="uid://pb3mdjtqko1t" path="res://scenes/personagem/tiro_magico.gd" id="1_8etje"]
+[ext_resource type="Texture2D" uid="uid://drdfm5ac68cfu" path="res://assets/sprites/Enemies & Objects.png" id="1_tiwyk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8etje"]
+atlas = ExtResource("1_tiwyk")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vtsq"]
+atlas = ExtResource("1_tiwyk")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cl8jh"]
+atlas = ExtResource("1_tiwyk")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnt0r"]
+atlas = ExtResource("1_tiwyk")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q2g84"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8etje")
+}],
+"loop": true,
+"name": &"tiro_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vtsq")
+}],
+"loop": true,
+"name": &"tiro_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cl8jh")
+}],
+"loop": true,
+"name": &"tiro_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnt0r")
+}],
+"loop": true,
+"name": &"tiro_up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_585y4"]
+size = Vector2(4, 6)
+
+[node name="Tiro_magico" type="Area2D" unique_id=1401855963]
+collision_layer = 0
+script = ExtResource("1_8etje")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2125812165]
+sprite_frames = SubResource("SpriteFrames_q2g84")
+animation = &"tiro_down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1097131246]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_585y4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

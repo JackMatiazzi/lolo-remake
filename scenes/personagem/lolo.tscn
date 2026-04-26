@@ -275,13 +275,16 @@ script = ExtResource("1_xnrtv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1067563436]
 sprite_frames = SubResource("SpriteFrames_mfqes")
-animation = &"victory"
+animation = &"walk_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=420602305]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_lolo")
 
 [node name="IdleTimer" type="Timer" parent="." unique_id=613154630]
+wait_time = 20.0
+one_shot = true
+autostart = true
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=19801723]
 target_position = Vector2(0, 8)
