@@ -12,6 +12,9 @@ var porta_aberta = Vector2i(5, 4)
 
 func _ready() -> void:
 	mapear_objetos_estaticos()
+	# Conecta o sinal do Player diretamente na função do HUD
+	$Lolo.disparos_atualizados.connect($Hud.set_disparos)
+	$Lolo.jogador_morreu.connect(_on_jogador_morreu)
 
 	var lista_itens = get_tree().get_nodes_in_group("coletaveis")
 	itens_restantes = lista_itens.size()
@@ -21,8 +24,8 @@ func _ready() -> void:
 		if item.has_signal("item_coletado"):
 			item.item_coletado.connect(_on_item_coletado)
 			
-	if $Bau_aberto.has_signal("level_concluido"):
-		$Bau_aberto.level_concluido.connect(_on_level_concluido)
+	if $Bau_Aberto.has_signal("level_concluido"):
+		$Bau_Aberto.level_concluido.connect(_on_level_concluido)
 
 func mapear_objetos_estaticos():
 	var map = $Sala_Base
@@ -50,3 +53,17 @@ func _on_item_coletado():
 func _on_level_concluido():
 	if pos_porta != Vector2i(-1, -1):
 		$Sala_Base.set_cell(pos_porta, 1, porta_aberta)
+
+func _on_jogador_morreu():
+	if $Bau_aberto.visible:
+		$Bau_aberto.visible = false
+		
+	# 2. Agora avisamos o GameMaster para processar a perda de vida/restart
+	if GameMaster.has_method("_ao_morrer"):
+		GameMaster._ao_morrer()
+
+func _on_sensor_level_body_entered(body: Node2D) -> void:
+	# Verificamos se é o player que entrou na porta aberta
+	if body.has_method("executar_vitoria"):
+		print("Fase concluída!")
+		body.executar_vitoria()

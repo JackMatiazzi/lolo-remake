@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ck2g6fhvs63co" path="res://assets/sprites/disparo.png" id="2_hqnrr"]
 [ext_resource type="FontFile" uid="uid://cy0whcj3gitmj" path="res://assets/fonts/adventures-of-lolo-2.otf" id="3_136eg"]
 [ext_resource type="LabelSettings" uid="uid://b1aubluq1ugxi" path="res://assets/fonts/new_label_settings.tres" id="4_136eg"]
+[ext_resource type="Texture2D" uid="uid://btityvjghrb1l" path="res://assets/sprites/NES - Adventures of Lolo 2 - Enemies - Monsters.png" id="6_oj5la"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0mwgc"]
 atlas = ExtResource("1_0mwgc")
@@ -21,15 +22,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Hud" type="CanvasLayer" unique_id=1198646795]
+[node name="Hud" type="CanvasLayer" unique_id=1198646795 groups=["hud"]]
 script = ExtResource("1_8qguk")
 
 [node name="VBoxContainer" type="Control" parent="." unique_id=1922696187]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 214.0
-offset_right = 254.0
-offset_bottom = 147.0
+offset_top = 24.0
+offset_bottom = 24.0
 
 [node name="IconeLolo" type="AnimatedSprite2D" parent="VBoxContainer" unique_id=544517423]
 position = Vector2(8, 8)
@@ -39,65 +39,59 @@ frame_progress = 0.7701873
 
 [node name="LabelVidas" type="Label" parent="VBoxContainer" unique_id=604846378]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 18.0
-offset_right = 12.0
-offset_bottom = 26.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 16.0
+offset_bottom = 24.0
 theme_override_fonts/font = ExtResource("3_136eg")
 theme_override_font_sizes/font_size = 4
 text = "0"
 label_settings = ExtResource("4_136eg")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="IconeOlho" type="Sprite2D" parent="VBoxContainer" unique_id=225986772]
-position = Vector2(7, 38)
-scale = Vector2(0.03, 0.03)
+position = Vector2(8, 40)
+scale = Vector2(0.031249998, 0.03125)
 texture = ExtResource("2_hqnrr")
 
 [node name="LabelDisparos" type="Label" parent="VBoxContainer" unique_id=1891939547]
 layout_mode = 0
-offset_left = 3.0
+offset_left = 8.0
 offset_top = 44.0
-offset_right = 12.0
+offset_right = 16.0
 offset_bottom = 52.0
 theme_override_fonts/font = ExtResource("3_136eg")
 text = "0"
 label_settings = ExtResource("4_136eg")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="LabelPW" type="Label" parent="VBoxContainer" unique_id=1184103729]
 layout_mode = 0
-offset_top = 56.0
-offset_right = 18.0
-offset_bottom = 64.0
+offset_top = 104.0
+offset_right = 16.0
+offset_bottom = 112.0
 theme_override_fonts/font = ExtResource("3_136eg")
 text = "PW"
 label_settings = ExtResource("4_136eg")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="SlotPW1" type="Label" parent="VBoxContainer" unique_id=1867922]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 68.0
-offset_right = 13.0
-offset_bottom = 76.0
-theme_override_fonts/font = ExtResource("3_136eg")
-text = "0"
-label_settings = ExtResource("4_136eg")
+[node name="SlotPW1" type="Sprite2D" parent="VBoxContainer" unique_id=928034250]
+position = Vector2(8, 120)
+texture = ExtResource("6_oj5la")
+region_enabled = true
+region_rect = Rect2(544, 62, 16, 16)
 
-[node name="SlotPW2" type="Label" parent="VBoxContainer" unique_id=636948855]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 80.0
-offset_right = 13.0
-offset_bottom = 88.0
-theme_override_fonts/font = ExtResource("3_136eg")
-text = "0"
-label_settings = ExtResource("4_136eg")
+[node name="SlotPW2" type="Sprite2D" parent="VBoxContainer" unique_id=1646131994]
+position = Vector2(8, 136)
+texture = ExtResource("6_oj5la")
+region_enabled = true
+region_rect = Rect2(544, 62, 16, 16)
 
-[node name="SlotPW3" type="Label" parent="VBoxContainer" unique_id=2068453739]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 92.0
-offset_right = 13.0
-offset_bottom = 100.0
-theme_override_fonts/font = ExtResource("3_136eg")
-text = "0"
-label_settings = ExtResource("4_136eg")
+[node name="SlotPW3" type="Sprite2D" parent="VBoxContainer" unique_id=1511048130]
+position = Vector2(8, 152)
+texture = ExtResource("6_oj5la")
+region_enabled = true
+region_rect = Rect2(544, 62, 16, 16)

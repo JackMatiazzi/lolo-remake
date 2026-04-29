@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="lolo-remake"
+run/main_scene="uid://cynylas7jxxek"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -20,11 +21,12 @@ GameMaster="*uid://ps7nwjacn24o"
 
 [display]
 
-window/size/viewport_width=256
-window/size/viewport_height=240
-window/size/window_width_override=512
-window/size/window_height_override=480
-window/stretch/mode="viewport"
+window/size/viewport_width=224
+window/size/viewport_height=224
+window/size/extend_to_title=true
+window/size/window_width_override=672
+window/size/window_height_override=672
+window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 
 [physics]
@@ -37,3 +39,5 @@ textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+viewport/hdr_2d=true
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
