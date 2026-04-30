@@ -271,6 +271,7 @@ size = Vector2(8, 8)
 
 [node name="Lolo" type="CharacterBody2D" unique_id=1744060228 groups=["personagem"]]
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_xnrtv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1067563436]

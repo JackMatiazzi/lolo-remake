@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://72lrog373q47"]
 
-[ext_resource type="Script" uid="uid://7mqbf7lckdxy" path="res://scenes/game/bau_aberto.gd" id="1_5d6ix"]
+[ext_resource type="Script" path="res://scenes/game/bau_aberto.gd" id="1_5d6ix"]
 [ext_resource type="Texture2D" uid="uid://drdfm5ac68cfu" path="res://assets/sprites/Enemies & Objects.png" id="1_ciiog"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5d6ix"]
@@ -31,7 +31,7 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ciiog"]
 size = Vector2(5, 5)
 
-[node name="Bau_Aberto" type="StaticBody2D" unique_id=1249629688]
+[node name="Bau_Aberto" type="StaticBody2D" unique_id=1249629688 groups=["bau"]]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_5d6ix")
