@@ -22,6 +22,7 @@ var venceu = false
 var is_moving = false
 var is_idle = false
 
+
 func _physics_process(_delta):
 	# 1. PRIORIDADE MÁXIMA: MORTE
 	# Se morreu ou venceu, nada mais importa.
