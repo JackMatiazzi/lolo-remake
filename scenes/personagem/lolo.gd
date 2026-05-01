@@ -85,9 +85,33 @@ func get_input_direction() -> Vector2:
 # --- LOGICA DE MUNDO ---
 
 func check_collision(direction):
-	ray.target_position = direction * tile_size
+	ray.position = direction * 4
+	ray.target_position = direction * (tile_size - 4)
+	
+	# Fazemos um teste rápido para ver se há um inimigo aqui
+	ray.hit_from_inside = true # Começamos falso para não nos prendermos
 	ray.force_raycast_update()
-	return ray.get_collider() if ray.is_colliding() else null
+	
+	if ray.is_colliding():
+		var colisor = ray.get_collider()
+		if colisor.is_in_group("inimigo"):
+			var distancia = global_position.distance_to(colisor.global_position)
+			
+			# SE estiver no CENTRO EXATO (menos de 2 pixels de distância)
+			if distancia < 2.0:
+				# DESATIVAMOS o Hit From Inside e ignoramos este inimigo específico
+				# para permitir que o RayCast aponte para fora sem bater em nada.
+				ray.hit_from_inside = false
+				ray.add_exception(colisor)
+	
+	# 2. Agora executamos o teste real com as configurações ajustadas
+	ray.force_raycast_update()
+	var resultado = ray.get_collider() if ray.is_colliding() else null
+	
+	# Limpamos as exceções para o próximo frame
+	ray.clear_exceptions()
+	
+	return resultado
 
 func processar_colisao(obstaculo, input_dir):
 	# Encapsulamos a lógica do bloco para limpar o physics_process
@@ -149,6 +173,10 @@ func atirar():
 func executar_morte():
 	morreu = true
 	is_moving = true
+	# 1. Esconde o Baú (usando grupo para segurança)
+	get_tree().call_group("bau", "set_visible", false)
+	# 2. Apaga o Spawner para ele não criar novos inimigos enquanto o Lolo morre
+	get_tree().call_group("spawner", "queue_free")
 	anim.play("die")
 
 func executar_vitoria():

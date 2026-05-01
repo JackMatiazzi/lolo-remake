@@ -55,10 +55,7 @@ func _on_level_concluido():
 		$Sala_Base.set_cell(pos_porta, 1, porta_aberta)
 
 func _on_jogador_morreu():
-	if $Bau_Aberto.visible:
-		$Bau_Aberto.visible = false
-		
-	# 2. Agora avisamos o GameMaster para processar a perda de vida/restart
+	# Agora avisamos o GameMaster para processar a perda de vida/restart
 	if GameMaster.has_method("_ao_morrer"):
 		GameMaster._ao_morrer()
 

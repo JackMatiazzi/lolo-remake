@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bpj8l2dmxlhw5"]
 
 [ext_resource type="Texture2D" uid="uid://b4jg5o8yfd6uq" path="res://assets/sprites/tileset.png" id="1_0cuyt"]
-[ext_resource type="Script" path="res://scenes/game/bloco_esmeralda.gd" id="1_syeob"]
+[ext_resource type="Script" uid="uid://dfr4o8ux002pc" path="res://scenes/game/bloco_esmeralda.gd" id="1_syeob"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_syeob"]
 atlas = ExtResource("1_0cuyt")

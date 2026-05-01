@@ -1,138 +1,78 @@
 extends CharacterBody2D
+class_name Inimigo
 
 @export var tile_size = 8
 @export var walk_speed = 0.1
 
-@onready var ray = $RayCast2D
+@onready var ray: RayCast2D = $RayCast2D
 @onready var anima: AnimatedSprite2D = $AnimatedSprite2D
-@onready var notifier: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
+@onready var jogador = get_tree().get_first_node_in_group("personagem")
 
-var jogador: Node2D
 var is_moving = false
+var pearl = false
+var voando = false
+var velocidade_morte: Vector2 = Vector2.ZERO
 
-var pearl: bool = false
-var voando: bool = false
-
-var velocidade_voo: Vector2 = Vector2.ZERO
-
-var animacao_atual: String = ""
-var posicao_inicial: Vector2
-var pode_processar: bool = true
-
-func _ready() -> void:
-	jogador = get_tree().get_first_node_in_group("personagem")
-	posicao_inicial = global_position
-	var bau = get_tree().get_first_node_in_group("bau")
-	if bau:
-		bau.level_concluido.connect(func(): queue_free())
-
-func _process(delta: float) -> void:
-	if not pode_processar:
-		return
-	
-	if jogador == null:
-		return
-
+func _physics_process(delta: float) -> void:
 	if voando:
-		velocity = velocidade_voo
+		# Aplica a velocidade de morte
+		velocity = velocidade_morte
 		move_and_slide()
 		return
 
 	if pearl:
 		return
+	
+	atualizar_direcao_do_olhar()
 
-
+func atualizar_direcao_do_olhar():
+	anima.animation = "idle"
 	var direcao = jogador.global_position - global_position
 	var angulo = rad_to_deg(direcao.angle())
-
-	var nova_animacao := ""
-
+	
 	if angulo > -20 and angulo <= 20:
-		nova_animacao = "direita"
-
+		anima.frame = 3 # Direita
 	elif angulo > 160 or angulo <= -160:
-		nova_animacao = "esquerda"
-
+		anima.frame = 0 # Esquerda
 	elif direcao.x > 0:
-		nova_animacao = "meio_direita"
+		anima.frame = 2 # Meio Direita
 	else:
-		nova_animacao = "meio_esquerda"
+		anima.frame = 1 # Meio Esquerda
 
-	if nova_animacao != animacao_atual:
-		animacao_atual = nova_animacao
-		anima.play(animacao_atual)
-
-func tomar_tiro():
-	print("tomar_tiro chamado! voando: ", voando, "pearl: ", pearl)
+func tomar_tiro(direcao_do_tiro: Vector2):
 	if voando:
 		return
-		
+
 	if pearl:
-		morrer_voando()
+		voando = true
+		
+		collision_layer = 0 # Para de ser um obstáculo
+		collision_mask = 0  # Para de bater em paredes
+		# -----------------------------
+		# Se a direção do tiro vier zerada por erro, definimos uma padrão
+		if direcao_do_tiro == Vector2.ZERO:
+			direcao_do_tiro = Vector2.UP 
+			
+		velocidade_morte = direcao_do_tiro.normalized() * 300.0
 	else:
 		virar_pearl()
 
 func virar_pearl():
 	pearl = true
-	animacao_atual = ""
 	anima.play("pearl")
 
-func morrer_voando():
-	voando = true
-	
-	var direcao = (global_position - jogador.global_position).normalized()
-	print("direcao: ", direcao)
-	velocidade_voo = direcao * 400
-	
-func _on_area_2d_area_entered(area):
-	print("area detectada:  ", area.name)
-	if area.is_in_group("tiro"):
-		print("tiro detectado")
-		tomar_tiro()
-		area.queue_free()
-
-func _on_visible_on_screen_notifier_2d_screen_exited():
-	if voando:
-		respawn()
-
-
-func respawn():
-	pode_processar = false
-	#visible = false
-	#set_physics_process(false)
-	
-	await get_tree().create_timer(10.0).timeout
-	
-
-	global_position = posicao_inicial
-	velocity = Vector2.ZERO
-	velocidade_voo = Vector2.ZERO
-	
-	pearl = false
-	voando = false
-	
-	#visible = true
-	#set_physics_process(true)
-	pode_processar = true
-	
-	animacao_atual = ""
-	anima.play("direita") # animação padrão
-
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	queue_free()
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	if animacao_atual == "" and pearl and not voando:
-		pearl = false
-		animacao_atual = "direita"
-		anima.play("direita")
-		
-func empurrar(direction: Vector2) -> bool:
-	#if not pearl:
-		#return false
+	if anima.animation == "pearl":
+		if not voando:
+			pearl = false
 
-	if is_moving:
+func empurrar(direction: Vector2) -> bool:
+	if is_moving or not pearl:
 		return false
 
-		
 	ray.target_position = direction * tile_size
 	ray.force_raycast_update()
 	
