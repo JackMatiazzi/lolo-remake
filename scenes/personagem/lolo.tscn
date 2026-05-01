@@ -264,7 +264,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lolo"]
-size = Vector2(14, 13)
+size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xnrtv"]
 size = Vector2(8, 8)
@@ -279,7 +279,6 @@ sprite_frames = SubResource("SpriteFrames_mfqes")
 animation = &"walk_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=420602305]
-position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_lolo")
 
 [node name="IdleTimer" type="Timer" parent="." unique_id=613154630]
@@ -288,7 +287,8 @@ one_shot = true
 autostart = true
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=19801723]
-target_position = Vector2(0, 8)
+collision_mask = 5
+hit_from_inside = true
 
 [node name="Sensor" type="Area2D" parent="." unique_id=1318291770]
 collision_layer = 2

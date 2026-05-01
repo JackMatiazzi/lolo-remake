@@ -6,9 +6,8 @@ signal level_concluido
 
 func _ready() -> void:
 	visible = false
-	var level = get_tree().current_scene
-	if level.has_signal("todos_coletados"):
-		level.todos_coletados.connect(_on_level_todos_coletados)
+	if get_parent().has_signal("todos_coletados"):
+		get_parent().todos_coletados.connect(_on_level_todos_coletados)
 
 func coletar():
 	if visible:

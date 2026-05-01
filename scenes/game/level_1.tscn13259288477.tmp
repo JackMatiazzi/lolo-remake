@@ -32,6 +32,8 @@ position = Vector2(88, 176)
 
 [node name="Snakey" parent="Spawner" unique_id=1775185825 instance=ExtResource("7_iu0x6")]
 position = Vector2(120, 120)
+tile_size = 8
+walk_speed = 0.1
 
 [node name="Lolo" parent="." unique_id=1744060228 instance=ExtResource("2_dn67k")]
 position = Vector2(24, 104)

@@ -29,6 +29,10 @@ window/size/window_height_override=672
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 
+[global_group]
+
+inimigo=""
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

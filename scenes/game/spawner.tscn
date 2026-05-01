@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bwfa1j4hx36pr"]
+
+[ext_resource type="Script" uid="uid://m1p26ij2lwcy" path="res://scenes/game/spawner.gd" id="1_apy4e"]
+[ext_resource type="Texture2D" uid="uid://drdfm5ac68cfu" path="res://assets/sprites/Enemies & Objects.png" id="2_xeolc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xydd0"]
+atlas = ExtResource("2_xeolc")
+region = Rect2(48, 112, 16, 16)
+
+[node name="Spawner" type="Node2D" unique_id=2011310142 groups=["spawner"]]
+script = ExtResource("1_apy4e")
+sprite_alerta = SubResource("AtlasTexture_xydd0")
