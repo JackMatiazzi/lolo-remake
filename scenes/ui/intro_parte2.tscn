@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dipnycrcgnc7a"]
+
+[ext_resource type="Script" uid="uid://dy0rtg8lxw6v5" path="res://scripts/ui/intro_parte_2.gd" id="1_3pypd"]
+[ext_resource type="VideoStream" uid="uid://qe3lnyalygd8" path="res://assets/video/intro_parte2.ogv" id="1_rdltb"]
+
+[node name="intro2" type="Node2D" unique_id=195494923]
+script = ExtResource("1_3pypd")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=387932703]
+custom_minimum_size = Vector2(224, 224)
+offset_right = 40.0
+offset_bottom = 40.0
+stream = ExtResource("1_rdltb")
+expand = true
+
+[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]

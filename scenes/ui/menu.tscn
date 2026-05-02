@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://b7eenc233oe2a"]
+
+[ext_resource type="Texture2D" uid="uid://de48o6yovmg18" path="res://assets/window/quadro_menu.png" id="1_7w7rl"]
+[ext_resource type="Script" uid="uid://ddd6or3jk6omw" path="res://scripts/ui/menu.gd" id="1_w6y0u"]
+[ext_resource type="Texture2D" uid="uid://bk4b4kjr1fcs5" path="res://assets/sprites/characters_new.png" id="2_wedc3"]
+[ext_resource type="FontFile" uid="uid://cy0whcj3gitmj" path="res://assets/fonts/adventures-of-lolo-2.otf" id="3_c2n5p"]
+[ext_resource type="Texture2D" uid="uid://d2lcqlulk22b6" path="res://assets/window/quadro_criacao.png" id="5_cx0sj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2n5p"]
+atlas = ExtResource("2_wedc3")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6y0u"]
+atlas = ExtResource("2_wedc3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cx0sj"]
+atlas = ExtResource("2_wedc3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntye7"]
+atlas = ExtResource("2_wedc3")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cghgw"]
+atlas = ExtResource("2_wedc3")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1pxh0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2n5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6y0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cx0sj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2n5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntye7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cghgw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c2n5p"]
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w6y0u"]
+line_spacing = 0.0
+font_size = 8
+font_color = Color(0, 0, 0, 0.57254905)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cx0sj"]
+font = ExtResource("3_c2n5p")
+font_size = 4
+font_color = Color(0, 0, 0, 1)
+outline_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cx0sj"]
+draw_center = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pxh0"]
+atlas = ExtResource("2_wedc3")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_e11en"]
+frames = 3
+frame_0/texture = SubResource("AtlasTexture_1pxh0")
+frame_1/duration = 1.0
+frame_2/duration = 1.0
+
+[node name="Menu" type="Control" unique_id=412434553]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w6y0u")
+
+[node name="Fundo" type="TextureRect" parent="." unique_id=28305032]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 32.0
+offset_right = 189.0
+offset_bottom = 144.0
+texture = ExtResource("1_7w7rl")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Cursor" type="AnimatedSprite2D" parent="Fundo" unique_id=1659875117]
+position = Vector2(32, 40)
+scale = Vector2(0.99999976, 0.99999994)
+sprite_frames = SubResource("SpriteFrames_1pxh0")
+frame_progress = 0.10216925
+
+[node name="iniciar" type="Label" parent="Fundo" unique_id=360929695]
+layout_mode = 1
+offset_left = 44.0
+offset_top = 40.0
+offset_right = 140.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("3_c2n5p")
+theme_override_font_sizes/font_size = 1
+text = "Iniciar"
+label_settings = SubResource("LabelSettings_c2n5p")
+
+[node name="senha" type="Label" parent="Fundo" unique_id=305017467]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 56.0
+offset_right = 113.0
+offset_bottom = 68.0
+theme_override_fonts/font = ExtResource("3_c2n5p")
+theme_override_font_sizes/font_size = 1
+text = "Senha"
+label_settings = SubResource("LabelSettings_w6y0u")
+
+[node name="copyright" type="TextureRect" parent="." unique_id=1984533922]
+layout_mode = 0
+offset_top = 144.0
+offset_right = 224.0
+offset_bottom = 224.0
+texture = ExtResource("5_cx0sj")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="text" type="Label" parent="copyright" unique_id=197290072]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 216.0
+offset_bottom = 58.0
+theme_override_font_sizes/font_size = 1
+text = "© 2026 Discipulos COMPANY - FACCAT
+AN-DR-E B-ARTZEN
+JACKSON MATIAZZI
+JOSE MACIEL 
+Nicole Busa
+"
+label_settings = SubResource("LabelSettings_cx0sj")
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=387308410]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 412.0
+offset_bottom = 240.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_c2n5p")
+theme_override_styles/normal = SubResource("StyleBoxFlat_cx0sj")
+text = "INIciar"
+icon = SubResource("AnimatedTexture_e11en")
