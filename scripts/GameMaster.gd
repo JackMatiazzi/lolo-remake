@@ -1,11 +1,11 @@
 extends Node
 
 var levels = [
-	"res://scenes/levels/level_01.tscn",
-	"res://scenes/levels/level_02.tscn",
-	"res://scenes/levels/level_03.tscn",
-	"res://scenes/levels/level_04.tscn",
-	"res://scenes/levels/level_05.tscn"
+	"res://scenes/levels/level_1.tscn",
+	"res://scenes/levels/level_2.tscn",
+	"res://scenes/levels/level_3.tscn",
+	"res://scenes/levels/level_4.tscn",
+	"res://scenes/levels/level_5.tscn"
 ]
 var level_atual_index = 0
 
