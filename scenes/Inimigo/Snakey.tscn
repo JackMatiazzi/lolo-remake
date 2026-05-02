@@ -41,10 +41,16 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_06pcj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwqfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nbxm")
 }],
-"loop": false,
+"loop": true,
 "name": &"idle",
-"speed": 1.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 5.0,
@@ -70,6 +76,7 @@ script = ExtResource("1_5f1gi")
 position = Vector2(4.7683716e-07, 2.3841858e-07)
 sprite_frames = SubResource("SpriteFrames_u5lw3")
 animation = &"idle"
+frame_progress = 0.8427722
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1398766001]
 shape = SubResource("RectangleShape2D_5f1gi")

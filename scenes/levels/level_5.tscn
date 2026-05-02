@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://do4eokh46da8w"]
+
+[ext_resource type="PackedScene" uid="uid://c5ye7nyvbh5ej" path="res://scenes/game/sala_base.tscn" id="1_qx3g6"]
+
+[node name="Level_5" type="Node2D" unique_id=677638777]
+
+[node name="Sala_Base" parent="." unique_id=49849981 instance=ExtResource("1_qx3g6")]
