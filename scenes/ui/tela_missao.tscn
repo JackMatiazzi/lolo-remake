@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://b7b5sgwunnxur"]
+
+[ext_resource type="Texture2D" uid="uid://xdj15p3ayj0d" path="res://assets/window/quadro_missao.png" id="1_elaio"]
+[ext_resource type="Script" uid="uid://bhy44v2wwat1b" path="res://scripts/ui/tela_missao.gd" id="1_xcj7q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xcj7q"]
+line_spacing = -5.0
+paragraph_spacing = 1.0
+font_size = 10
+font_color = Color(0, 0, 0, 1)
+
+[node name="tela_missao" type="Control" unique_id=1246935660]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 224.0
+offset_bottom = 224.0
+script = ExtResource("1_xcj7q")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1764624836]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 224.0
+offset_bottom = 184.0
+texture = ExtResource("1_elaio")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="." unique_id=1775675674]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 64.0
+offset_right = 195.0
+offset_bottom = 193.0
+text = "                       ANDAR 1
+
+SUA MISSÃO: SALVE
+A PRINCESA LALA
+DO GRANDE IMPERIO
+DO MAL!
+VOCÊ  É O UNICO
+QUE PODE SALVAR
+A PRINCESA LALA.
+"
+label_settings = SubResource("LabelSettings_xcj7q")

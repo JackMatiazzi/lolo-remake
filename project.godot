@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameMaster="*uid://ps7nwjacn24o"
+Fade="*uid://co6jbncjt03le"
 
 [display]
 

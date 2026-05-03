@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://ce66sn5ffcpxv"]
+
+[ext_resource type="FontFile" uid="uid://cy0whcj3gitmj" path="res://assets/fonts/adventures-of-lolo-2.otf" id="1_font"]
+[ext_resource type="Script" uid="uid://chpb75hkfowiw" path="res://scripts/ui/game_over.gd" id="2_script"]
+[ext_resource type="Texture2D" uid="uid://cq3c62jeomv1l" path="res://assets/window/password_over.png" id="3_img"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gameover"]
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_password"]
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_senha"]
+font_size = 8
+
+[node name="game_over" type="Control" unique_id=1118493287]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 224.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_script")
+
+[node name="GAME OVER" type="Label" parent="." unique_id=1701737897]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 55.0
+offset_right = 164.0
+offset_bottom = 68.0
+theme_override_fonts/font = ExtResource("1_font")
+text = "GAME  OVER"
+label_settings = SubResource("LabelSettings_gameover")
+horizontal_alignment = 1
+
+[node name="Panel" type="TextureRect" parent="." unique_id=977737503]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 100.0
+offset_right = 172.0
+offset_bottom = 170.0
+texture = ExtResource("3_img")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="password_label" type="Label" parent="Panel" unique_id=111222333]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 17.0
+offset_right = 112.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("1_font")
+text = "PASSWORD"
+label_settings = SubResource("LabelSettings_password")
+horizontal_alignment = 1
+
+[node name="senha_label" type="Label" parent="Panel" unique_id=444555666]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 35.0
+offset_right = 112.0
+offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("1_font")
+text = "BBBV"
+label_settings = SubResource("LabelSettings_senha")
+horizontal_alignment = 1
