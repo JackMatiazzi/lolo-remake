@@ -9,6 +9,7 @@ class_name Inimigo
 @onready var jogador = get_tree().get_first_node_in_group("personagem")
 
 var is_moving = false
+var atualizar = true
 var pearl = false
 var voando = false
 var velocidade_morte: Vector2 = Vector2.ZERO
@@ -23,7 +24,14 @@ func _physics_process(delta: float) -> void:
 	if pearl:
 		return
 	
-	atualizar_direcao_do_olhar()
+	if atualizar:
+		atualizar_direcao_do_olhar()
+	else:
+		if not pearl:
+			anima.play("idle")
+	
+func _on_level_todos_coletados():
+	atualizar = false
 
 func atualizar_direcao_do_olhar():
 	anima.animation = "idle"

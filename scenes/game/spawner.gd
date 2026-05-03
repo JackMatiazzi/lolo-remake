@@ -6,6 +6,7 @@ extends Node2D
 
 var registro_inimigos = {}
 var level_ativo = true
+var todos_coletados = false
 
 func _ready():
 	# Conexão com o baú
@@ -13,12 +14,20 @@ func _ready():
 	if bau:
 		# Quando o level for concluído, mudamos o estado e deletamos
 		bau.level_concluido.connect(_ao_concluir_level)
-	
+	var level = get_tree().current_scene
+	if level.has_signal("todos_coletados"):
+		level.todos_coletados.connect(_on_todos_coletados)
+		
 	await get_tree().process_frame
 	for inimigo in get_children():
 		if inimigo is CharacterBody2D:
 			registrar_inimigo(inimigo, inimigo.global_position, inimigo.scene_file_path)
 
+func _on_todos_coletados():
+	todos_coletados = true
+	# avisar todos que já estão na tela agora
+	get_tree().call_group("inimigo", "_on_level_todos_coletados")
+	
 func _ao_concluir_level():
 	level_ativo = false # Trava o spawn imediatamente
 	queue_free()        # Remove o spawner e todos os inimigos filhos
@@ -28,6 +37,11 @@ func registrar_inimigo(inimigo: CharacterBody2D, pos: Vector2, caminho: String):
 	registro_inimigos[id] = { "posicao": pos, "arquivo": caminho }
 	if not inimigo.tree_exited.is_connected(_ao_inimigo_sair):
 		inimigo.tree_exited.connect(_ao_inimigo_sair.bind(id))
+	
+	if todos_coletados:
+		# Verificamos se o inimigo tem a função necessária para não dar erro
+		if inimigo.has_method("_on_level_todos_coletados"):
+			inimigo._on_level_todos_coletados()
 
 func _ao_inimigo_sair(id_antigo: int):
 	# Se o spawner não estiver na árvore (ex: fase reiniciando), para tudo.

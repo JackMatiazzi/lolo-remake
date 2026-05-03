@@ -189,8 +189,8 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		jogador_morreu.emit()
 	# Quando a dança da vitória acabar:
 	elif anim.animation == "victory":
-		#GameMaster.proxima_fase() # O Player avisa que pode mudar de cena
-		get_tree().quit()
+		GameMaster.proxima_fase() # O Player avisa que pode mudar de cena
+		#get_tree().quit()
 
 func _on_idle_timer_timeout():
 	if not is_moving:
