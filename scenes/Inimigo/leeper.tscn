@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://toujwd1f2hs0"]
+
+[ext_resource type="Script" uid="uid://cm77iej07fl3y" path="res://scenes/Inimigo/leeper.gd" id="1_i6j8r"]
+[ext_resource type="Texture2D" uid="uid://drdfm5ac68cfu" path="res://assets/sprites/Enemies & Objects.png" id="2_mth75"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6j8r"]
+atlas = ExtResource("2_mth75")
+region = Rect2(32, 352, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mth75"]
+atlas = ExtResource("2_mth75")
+region = Rect2(48, 352, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egdp2"]
+atlas = ExtResource("2_mth75")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gylbn"]
+atlas = ExtResource("2_mth75")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5q50"]
+atlas = ExtResource("2_mth75")
+region = Rect2(0, 352, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11e7j"]
+atlas = ExtResource("2_mth75")
+region = Rect2(16, 352, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ieliv"]
+atlas = ExtResource("2_mth75")
+region = Rect2(0, 368, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6svok"]
+atlas = ExtResource("2_mth75")
+region = Rect2(16, 368, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51mey"]
+atlas = ExtResource("2_mth75")
+region = Rect2(0, 400, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8amf"]
+atlas = ExtResource("2_mth75")
+region = Rect2(16, 400, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxc44"]
+atlas = ExtResource("2_mth75")
+region = Rect2(0, 384, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cah4"]
+atlas = ExtResource("2_mth75")
+region = Rect2(16, 384, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u5lw3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6j8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mth75")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_egdp2")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_gylbn")
+}],
+"loop": false,
+"name": &"pearl",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5q50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11e7j")
+}],
+"loop": false,
+"name": &"walk_down",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ieliv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6svok")
+}],
+"loop": false,
+"name": &"walk_left",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51mey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8amf")
+}],
+"loop": false,
+"name": &"walk_right",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxc44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cah4")
+}],
+"loop": false,
+"name": &"walk_up",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5f1gi"]
+size = Vector2(16, 16)
+
+[node name="Leeper" type="CharacterBody2D" unique_id=1775185825 groups=["inimigo"]]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_i6j8r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1722524849]
+position = Vector2(4.7683716e-07, 2.3841858e-07)
+sprite_frames = SubResource("SpriteFrames_u5lw3")
+animation = &"idle"
+frame_progress = 0.6599335
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1398766001]
+shape = SubResource("RectangleShape2D_5f1gi")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1172196163]
+rect = Rect2(-8, -8, 16, 16)
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1816116072]
+collision_mask = 7
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
