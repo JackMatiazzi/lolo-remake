@@ -16,4 +16,4 @@ func _input(event):
 		cursor.position.y = 56
 	if Input.is_action_just_pressed("ui_accept"):
 		if opcao == 0:
-			get_tree().change_scene_to_file("res://scenes/ui/intro_parte2.tscn")
+			Fade.mudar_cena("res://scenes/ui/intro_parte2.tscn")
