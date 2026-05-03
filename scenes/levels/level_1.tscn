@@ -5,7 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://t7uy02e8tl5" path="res://scenes/game/coração.tscn" id="3_qxy0u"]
 [ext_resource type="PackedScene" uid="uid://72lrog373q47" path="res://scenes/game/bau_aberto.tscn" id="4_excbq"]
 [ext_resource type="PackedScene" uid="uid://bwfa1j4hx36pr" path="res://scenes/game/spawner.tscn" id="5_iav0o"]
-[ext_resource type="PackedScene" uid="uid://hl330pdqq1jq" path="res://scenes/Inimigo/Snakey.tscn" id="6_dnkej"]
+[ext_resource type="PackedScene" uid="uid://hl330pdqq1jq" path="res://scenes/Inimigo/snakey.tscn" id="6_dnkej"]
+[ext_resource type="PackedScene" uid="uid://toujwd1f2hs0" path="res://scenes/Inimigo/leeper.tscn" id="7_dga24"]
 [ext_resource type="PackedScene" uid="uid://lolo00000001" path="res://scenes/personagem/lolo.tscn" id="7_mm8aj"]
 [ext_resource type="PackedScene" uid="uid://b0qby3c6tvior" path="res://scenes/ui/hud.tscn" id="8_wtwp4"]
 
@@ -32,6 +33,9 @@ position = Vector2(88, 176)
 
 [node name="Snakey" parent="Spawner" unique_id=1775185825 instance=ExtResource("6_dnkej")]
 position = Vector2(120, 120)
+
+[node name="Leeper" parent="Spawner" unique_id=891647434 instance=ExtResource("7_dga24")]
+position = Vector2(120, 40)
 
 [node name="Lolo" parent="." unique_id=1744060228 instance=ExtResource("7_mm8aj")]
 position = Vector2(24, 104)
