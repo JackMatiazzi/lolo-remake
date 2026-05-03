@@ -1,15 +1,25 @@
 extends Node
 
 var levels = [
-	"res://scenes/levels/level_01.tscn",
-	"res://scenes/levels/level_02.tscn",
-	"res://scenes/levels/level_03.tscn",
-	"res://scenes/levels/level_04.tscn",
-	"res://scenes/levels/level_05.tscn"
+	"res://scenes/game/level_1.tscn",
+	"res://scenes/game/level_2.tscn",
+	"res://scenes/game/level_3.tscn",
+	"res://scenes/game/level_4.tscn",
+	"res://scenes/game/level_5.tscn"
 ]
-var level_atual_index = 0
 
-var vida:= 5
+
+var senhas = {
+	"BBBV": 0,
+	"BCBT": 1,
+	"BDBR": 2,
+	"BGBQ": 3,
+	"BHBP": 4
+}
+
+var level_atual_index = 0
+var vida := 5
+var veio_de_game_over = false
 
 func _ao_morrer():
 	if vida <= 0:
@@ -19,16 +29,34 @@ func _ao_morrer():
 	if hud:
 		hud.set_vidas(vida)
 	if vida <= 0:
-		get_tree().quit()
+		veio_de_game_over = true
+		Fade.mudar_cena("res://scenes/ui/game_over.tscn")
 	else:
 		get_tree().reload_current_scene()
 
 func proxima_fase():
 	level_atual_index += 1
 	if level_atual_index < levels.size():
-		get_tree().change_scene_to_file(levels[level_atual_index])
+		Fade.mudar_cena(levels[level_atual_index])
 	else:
-		print("Parabéns! Você completou todas as fases.")
-		# Aqui você poderia carregar uma tela de créditos ou menu principalfunc proxima_fase():
-	level_atual_index += 1
-		
+		Fade.mudar_cena("res://scenes/ui/menu.tscn")
+
+func ir_para_senha(senha: String):
+	if senhas.has(senha):
+		level_atual_index = senhas[senha]
+		vida = 5
+		veio_de_game_over = false
+		Fade.mudar_cena(levels[level_atual_index])
+	else:
+		Fade.mudar_cena("res://scenes/ui/menu.tscn")
+
+func resetar():
+	level_atual_index = 0
+	vida = 5
+	veio_de_game_over = false
+
+func senha_atual() -> String:
+	for s in senhas:
+		if senhas[s] == level_atual_index:
+			return s
+	return ""

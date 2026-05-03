@@ -59,7 +59,7 @@ font_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_w6y0u"]
 line_spacing = 0.0
 font_size = 8
-font_color = Color(0, 0, 0, 0.57254905)
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_cx0sj"]
 font = ExtResource("3_c2n5p")
