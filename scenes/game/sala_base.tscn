@@ -144,6 +144,8 @@ texture = ExtResource("1_wn6hh")
 4:4/0 = 0
 4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:4/0/custom_data_0 = "porta"
+0:5/0 = 0
+1:5/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_8uiqw"]
 physics_layer_0/collision_layer = 1

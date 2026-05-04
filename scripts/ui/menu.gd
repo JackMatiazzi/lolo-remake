@@ -9,6 +9,8 @@ func _ready():
 	cursor.play("default")
 	if GameMaster.veio_de_game_over:
 		label_senha.text = "CONTINUAR"
+		opcao = 1
+		cursor.position.y = 56
 
 func _input(_event):
 	if Input.is_action_just_pressed("ui_up"):
