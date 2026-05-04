@@ -49,3 +49,5 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor_Level" unique_id=1965310915]
 shape = SubResource("RectangleShape2D_fiq81")
+
+[connection signal="body_entered" from="Sensor_Level" to="." method="_on_sensor_level_body_entered"]
