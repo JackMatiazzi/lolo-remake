@@ -1,11 +1,6 @@
 extends Node
 
 var levels = [
-	"res://scenes/game/level_1.tscn",
-	"res://scenes/game/level_2.tscn",
-	"res://scenes/game/level_3.tscn",
-	"res://scenes/game/level_4.tscn",
-	"res://scenes/game/level_5.tscn"
 	"res://scenes/levels/level_1.tscn",
 	"res://scenes/levels/level_2.tscn",
 	"res://scenes/levels/level_3.tscn",
@@ -37,7 +32,7 @@ func _ao_morrer():
 		veio_de_game_over = true
 		Fade.mudar_cena("res://scenes/ui/game_over.tscn")
 	else:
-		get_tree().reload_current_scene()
+		Fade.mudar_cena(levels[level_atual_index])
 
 func proxima_fase():
 	level_atual_index += 1
@@ -48,7 +43,7 @@ func proxima_fase():
 
 func ir_para_senha(senha: String):
 	if senhas.has(senha):
-		level_atual_index = senhas[senha]
+		senha = senhas[level_atual_index]
 		vida = 5
 		veio_de_game_over = false
 		Fade.mudar_cena(levels[level_atual_index])

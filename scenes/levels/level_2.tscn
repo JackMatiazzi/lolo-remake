@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://dfcbb805tkeoy"]
 
+[ext_resource type="Script" uid="uid://cu8qbwxa8ny7y" path="res://scripts/level/level.gd" id="1_ibugp"]
 [ext_resource type="PackedScene" uid="uid://c5ye7nyvbh5ej" path="res://scenes/game/sala_base.tscn" id="1_serc7"]
 [ext_resource type="PackedScene" uid="uid://t7uy02e8tl5" path="res://scenes/game/coração.tscn" id="2_g2h2n"]
 [ext_resource type="PackedScene" uid="uid://bpj8l2dmxlhw5" path="res://scenes/game/bloco_esmeralda.tscn" id="3_ra442"]
@@ -11,6 +12,7 @@
 size = Vector2(16, 8)
 
 [node name="Level_2" type="Node2D" unique_id=1939569791]
+script = ExtResource("1_ibugp")
 
 [node name="Sala_Base" parent="." unique_id=49849981 instance=ExtResource("1_serc7")]
 position = Vector2(-0.105, 0.01)

@@ -1,9 +1,9 @@
 extends CanvasLayer
 
+@onready var anim = $AnimationPlayer
+
 func mudar_cena(caminho: String):
-	$AnimationPlayer.play("fade_out")
-	
-	await $AnimationPlayer.animation_finished
-	
+	anim.play("fade_out")
+	await anim.animation_finished
 	get_tree().change_scene_to_file(caminho)
-	$AnimationPlayer.play("fade_in")
+	anim.play("fade_in")
