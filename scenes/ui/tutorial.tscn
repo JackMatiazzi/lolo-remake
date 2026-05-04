@@ -1,0 +1,80 @@
+[gd_scene format=4 uid="uid://jscs7oc60m77"]
+
+[ext_resource type="Script" path="res://scripts/ui/tutorial.gd" id="1_tut"]
+[ext_resource type="FontFile" uid="uid://cy0whcj3gitmj" path="res://assets/fonts/adventures-of-lolo-2.otf" id="2_font"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_titulo"]
+font_size = 5
+font_color = Color(1, 0.85, 0.2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_texto"]
+font_size = 4
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_enter"]
+font_size = 3
+font_color = Color(0.7, 0.7, 0.7, 1)
+
+[node name="tutorial" type="CanvasLayer"]
+script = ExtResource("1_tut")
+process_mode = 3
+
+[node name="Fundo" type="ColorRect" parent="."]
+offset_right = 224.0
+offset_bottom = 224.0
+color = Color(0, 0, 0, 0.82)
+
+[node name="Titulo" type="Label" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 30.0
+offset_right = 212.0
+offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("2_font")
+text = "COMO JOGAR"
+label_settings = SubResource("LabelSettings_titulo")
+horizontal_alignment = 1
+
+[node name="Mover" type="Label" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 68.0
+offset_right = 212.0
+offset_bottom = 82.0
+theme_override_fonts/font = ExtResource("2_font")
+text = "SETAS  =  MOVER"
+label_settings = SubResource("LabelSettings_texto")
+horizontal_alignment = 1
+
+[node name="Poder" type="Label" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 90.0
+offset_right = 212.0
+offset_bottom = 104.0
+theme_override_fonts/font = ExtResource("2_font")
+text = "ESPACO  =  USAR PODER"
+label_settings = SubResource("LabelSettings_texto")
+horizontal_alignment = 1
+
+[node name="Reset" type="Label" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 112.0
+offset_right = 212.0
+offset_bottom = 126.0
+theme_override_fonts/font = ExtResource("2_font")
+text = "SHIFT  =  REINICIAR FASE"
+label_settings = SubResource("LabelSettings_texto")
+horizontal_alignment = 1
+
+[node name="Continuar" type="Label" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 165.0
+offset_right = 212.0
+offset_bottom = 177.0
+theme_override_fonts/font = ExtResource("2_font")
+text = "ENTER PARA CONTINUAR"
+label_settings = SubResource("LabelSettings_enter")
+horizontal_alignment = 1

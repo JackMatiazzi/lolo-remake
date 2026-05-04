@@ -54,3 +54,5 @@ shape = SubResource("RectangleShape2D_0ljxa")
 position = Vector2(104, 104)
 
 [node name="Snakey" parent="Spawner" unique_id=1775185825 instance=ExtResource("7_ugcn1")]
+
+[connection signal="body_entered" from="Sensor_Level" to="." method="_on_sensor_level_body_entered"]
