@@ -2,8 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://c5ye7nyvbh5ej" path="res://scenes/game/sala_base.tscn" id="1_ehwls"]
 [ext_resource type="PackedScene" uid="uid://lolo00000001" path="res://scenes/personagem/lolo.tscn" id="2_7ywai"]
-[ext_resource type="PackedScene" uid="uid://hl330pdqq1jq" path="res://scenes/Inimigo/snakey.tscn" id="3_7ywai"]
+[ext_resource type="PackedScene" uid="uid://hl330pdqq1jq" path="res://scenes/Inimigo/Snakey.tscn" id="3_7ywai"]
 [ext_resource type="PackedScene" uid="uid://b0qby3c6tvior" path="res://scenes/ui/hud.tscn" id="4_s362i"]
+[ext_resource type="PackedScene" uid="uid://dor3020t502dj" path="res://scenes/Inimigo/gol/Gol.tscn" id="6_jw5pe"]
 
 [node name="LevelTeste" type="Node2D" unique_id=1014552644]
 
@@ -20,3 +21,9 @@ collision_layer = 1
 collision_mask = 2
 
 [node name="Hud" parent="." unique_id=1198646795 instance=ExtResource("4_s362i")]
+
+[node name="Gol" parent="." unique_id=169078184 instance=ExtResource("6_jw5pe")]
+position = Vector2(24, 88)
+
+[node name="Gol2" parent="." unique_id=803873729 instance=ExtResource("6_jw5pe")]
+position = Vector2(80, 40)
