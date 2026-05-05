@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://hl330pdqq1jq" path="res://scenes/Inimigo/Snakey.tscn" id="6_dnkej"]
 [ext_resource type="PackedScene" uid="uid://lolo00000001" path="res://scenes/personagem/lolo.tscn" id="7_mm8aj"]
 [ext_resource type="PackedScene" uid="uid://b0qby3c6tvior" path="res://scenes/ui/hud.tscn" id="8_wtwp4"]
-[ext_resource type="PackedScene" path="res://scenes/ui/tutorial.tscn" id="9_tut"]
+[ext_resource type="PackedScene" uid="uid://jscs7oc60m77" path="res://scenes/ui/tutorial.tscn" id="9_tut"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iy5hv"]
 size = Vector2(16, 8)
@@ -48,6 +48,6 @@ collision_mask = 2
 position = Vector2(120, 20)
 shape = SubResource("RectangleShape2D_iy5hv")
 
-[node name="tutorial" parent="." instance=ExtResource("9_tut")]
+[node name="tutorial" parent="." unique_id=734888147 instance=ExtResource("9_tut")]
 
 [connection signal="body_entered" from="Sensor_Level" to="." method="_on_sensor_level_body_entered"]

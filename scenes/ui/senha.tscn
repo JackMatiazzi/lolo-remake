@@ -5,11 +5,19 @@
 [ext_resource type="FontFile" uid="uid://cy0whcj3gitmj" path="res://assets/fonts/adventures-of-lolo-2.otf" id="2_font"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cursor"]
-font_size = 3
+font_size = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_letra"]
 font_size = 3
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vr8jh"]
+font_size = 3
+font_color = Color(0, 0, 0, 0.47843137)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5o5x5"]
+font_size = 3
+font_color = Color(0, 0, 0, 0.43529412)
 
 [sub_resource type="LabelSettings" id="LabelSettings_password"]
 font_size = 6
@@ -43,10 +51,10 @@ stretch_mode = 4
 
 [node name="Cursor" type="Label" parent="TextureRect" unique_id=353116485]
 layout_mode = 0
-offset_left = 49.0
-offset_top = 35.0
-offset_right = 65.0
-offset_bottom = 47.0
+offset_left = 52.0
+offset_top = 37.0
+offset_right = 59.0
+offset_bottom = 45.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "►"
 label_settings = SubResource("LabelSettings_cursor")
@@ -55,9 +63,9 @@ horizontal_alignment = 1
 [node name="A" type="Label" parent="TextureRect" unique_id=100000001]
 layout_mode = 0
 offset_left = 56.0
-offset_top = 37.0
-offset_right = 68.0
-offset_bottom = 49.0
+offset_top = 40.0
+offset_right = 64.0
+offset_bottom = 43.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "A"
 label_settings = SubResource("LabelSettings_letra")
@@ -67,7 +75,7 @@ horizontal_alignment = 1
 layout_mode = 0
 offset_left = 72.0
 offset_top = 40.0
-offset_right = 81.0
+offset_right = 80.0
 offset_bottom = 44.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "B"
@@ -98,10 +106,10 @@ horizontal_alignment = 1
 
 [node name="E" type="Label" parent="TextureRect" unique_id=100000005]
 layout_mode = 0
-offset_left = 117.0
-offset_top = 35.0
-offset_right = 126.0
-offset_bottom = 39.0
+offset_left = 120.0
+offset_top = 40.0
+offset_right = 129.0
+offset_bottom = 44.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "E"
 label_settings = SubResource("LabelSettings_letra")
@@ -109,10 +117,10 @@ horizontal_alignment = 1
 
 [node name="F" type="Label" parent="TextureRect" unique_id=100000006]
 layout_mode = 0
-offset_left = 133.0
-offset_top = 35.0
-offset_right = 142.0
-offset_bottom = 39.0
+offset_left = 136.0
+offset_top = 40.0
+offset_right = 145.0
+offset_bottom = 44.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "F"
 label_settings = SubResource("LabelSettings_letra")
@@ -120,10 +128,10 @@ horizontal_alignment = 1
 
 [node name="G" type="Label" parent="TextureRect" unique_id=100000007]
 layout_mode = 0
-offset_left = 149.0
-offset_top = 35.0
-offset_right = 158.0
-offset_bottom = 39.0
+offset_left = 152.0
+offset_top = 40.0
+offset_right = 161.0
+offset_bottom = 44.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "G"
 label_settings = SubResource("LabelSettings_letra")
@@ -131,10 +139,10 @@ horizontal_alignment = 1
 
 [node name="H" type="Label" parent="TextureRect" unique_id=100000008]
 layout_mode = 0
-offset_left = 165.0
-offset_top = 35.0
-offset_right = 174.0
-offset_bottom = 39.0
+offset_left = 168.0
+offset_top = 40.0
+offset_right = 176.0
+offset_bottom = 44.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "H"
 label_settings = SubResource("LabelSettings_letra")
@@ -142,10 +150,10 @@ horizontal_alignment = 1
 
 [node name="I" type="Label" parent="TextureRect" unique_id=100000009]
 layout_mode = 0
-offset_left = 53.0
-offset_top = 51.0
-offset_right = 62.0
-offset_bottom = 55.0
+offset_left = 56.0
+offset_top = 56.0
+offset_right = 65.0
+offset_bottom = 60.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "I"
 label_settings = SubResource("LabelSettings_letra")
@@ -153,10 +161,10 @@ horizontal_alignment = 1
 
 [node name="J" type="Label" parent="TextureRect" unique_id=100000010]
 layout_mode = 0
-offset_left = 69.0
-offset_top = 51.0
-offset_right = 78.0
-offset_bottom = 55.0
+offset_left = 72.0
+offset_top = 56.0
+offset_right = 81.0
+offset_bottom = 60.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "J"
 label_settings = SubResource("LabelSettings_letra")
@@ -164,10 +172,10 @@ horizontal_alignment = 1
 
 [node name="K" type="Label" parent="TextureRect" unique_id=100000011]
 layout_mode = 0
-offset_left = 85.0
-offset_top = 51.0
-offset_right = 94.0
-offset_bottom = 55.0
+offset_left = 88.0
+offset_top = 56.0
+offset_right = 97.0
+offset_bottom = 60.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "K"
 label_settings = SubResource("LabelSettings_letra")
@@ -175,10 +183,10 @@ horizontal_alignment = 1
 
 [node name="L" type="Label" parent="TextureRect" unique_id=100000012]
 layout_mode = 0
-offset_left = 101.0
-offset_top = 51.0
-offset_right = 110.0
-offset_bottom = 55.0
+offset_left = 104.0
+offset_top = 56.0
+offset_right = 113.0
+offset_bottom = 60.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "L"
 label_settings = SubResource("LabelSettings_letra")
@@ -186,10 +194,10 @@ horizontal_alignment = 1
 
 [node name="M" type="Label" parent="TextureRect" unique_id=100000013]
 layout_mode = 0
-offset_left = 117.0
-offset_top = 51.0
-offset_right = 126.0
-offset_bottom = 55.0
+offset_left = 120.0
+offset_top = 56.0
+offset_right = 129.0
+offset_bottom = 60.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "M"
 label_settings = SubResource("LabelSettings_letra")
@@ -197,10 +205,10 @@ horizontal_alignment = 1
 
 [node name="N" type="Label" parent="TextureRect" unique_id=100000014]
 layout_mode = 0
-offset_left = 133.0
-offset_top = 51.0
-offset_right = 142.0
-offset_bottom = 55.0
+offset_left = 136.0
+offset_top = 56.0
+offset_right = 145.0
+offset_bottom = 60.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "N"
 label_settings = SubResource("LabelSettings_letra")
@@ -208,10 +216,10 @@ horizontal_alignment = 1
 
 [node name="O" type="Label" parent="TextureRect" unique_id=100000015]
 layout_mode = 0
-offset_left = 149.0
-offset_top = 51.0
-offset_right = 158.0
-offset_bottom = 55.0
+offset_left = 152.0
+offset_top = 56.0
+offset_right = 161.0
+offset_bottom = 60.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "O"
 label_settings = SubResource("LabelSettings_letra")
@@ -219,10 +227,10 @@ horizontal_alignment = 1
 
 [node name="P" type="Label" parent="TextureRect" unique_id=100000016]
 layout_mode = 0
-offset_left = 165.0
-offset_top = 51.0
-offset_right = 174.0
-offset_bottom = 55.0
+offset_left = 168.0
+offset_top = 56.0
+offset_right = 176.0
+offset_bottom = 60.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "P"
 label_settings = SubResource("LabelSettings_letra")
@@ -230,10 +238,10 @@ horizontal_alignment = 1
 
 [node name="Q" type="Label" parent="TextureRect" unique_id=100000017]
 layout_mode = 0
-offset_left = 53.0
-offset_top = 67.0
-offset_right = 62.0
-offset_bottom = 71.0
+offset_left = 56.0
+offset_top = 72.0
+offset_right = 65.0
+offset_bottom = 76.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "Q"
 label_settings = SubResource("LabelSettings_letra")
@@ -241,10 +249,10 @@ horizontal_alignment = 1
 
 [node name="R" type="Label" parent="TextureRect" unique_id=100000018]
 layout_mode = 0
-offset_left = 69.0
-offset_top = 67.0
-offset_right = 78.0
-offset_bottom = 71.0
+offset_left = 72.0
+offset_top = 72.0
+offset_right = 81.0
+offset_bottom = 76.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "R"
 label_settings = SubResource("LabelSettings_letra")
@@ -252,10 +260,10 @@ horizontal_alignment = 1
 
 [node name="S" type="Label" parent="TextureRect" unique_id=100000019]
 layout_mode = 0
-offset_left = 85.0
-offset_top = 67.0
-offset_right = 94.0
-offset_bottom = 71.0
+offset_left = 88.0
+offset_top = 72.0
+offset_right = 97.0
+offset_bottom = 76.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "S"
 label_settings = SubResource("LabelSettings_letra")
@@ -263,10 +271,10 @@ horizontal_alignment = 1
 
 [node name="T" type="Label" parent="TextureRect" unique_id=100000020]
 layout_mode = 0
-offset_left = 101.0
-offset_top = 67.0
-offset_right = 110.0
-offset_bottom = 71.0
+offset_left = 104.0
+offset_top = 72.0
+offset_right = 113.0
+offset_bottom = 76.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "T"
 label_settings = SubResource("LabelSettings_letra")
@@ -274,10 +282,10 @@ horizontal_alignment = 1
 
 [node name="U" type="Label" parent="TextureRect" unique_id=100000021]
 layout_mode = 0
-offset_left = 117.0
-offset_top = 67.0
-offset_right = 126.0
-offset_bottom = 71.0
+offset_left = 120.0
+offset_top = 72.0
+offset_right = 129.0
+offset_bottom = 76.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "U"
 label_settings = SubResource("LabelSettings_letra")
@@ -285,10 +293,10 @@ horizontal_alignment = 1
 
 [node name="V" type="Label" parent="TextureRect" unique_id=100000022]
 layout_mode = 0
-offset_left = 133.0
-offset_top = 67.0
-offset_right = 142.0
-offset_bottom = 71.0
+offset_left = 136.0
+offset_top = 72.0
+offset_right = 145.0
+offset_bottom = 76.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "V"
 label_settings = SubResource("LabelSettings_letra")
@@ -296,10 +304,10 @@ horizontal_alignment = 1
 
 [node name="W" type="Label" parent="TextureRect" unique_id=100000023]
 layout_mode = 0
-offset_left = 149.0
-offset_top = 67.0
-offset_right = 158.0
-offset_bottom = 71.0
+offset_left = 152.0
+offset_top = 72.0
+offset_right = 161.0
+offset_bottom = 76.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "W"
 label_settings = SubResource("LabelSettings_letra")
@@ -307,10 +315,10 @@ horizontal_alignment = 1
 
 [node name="X" type="Label" parent="TextureRect" unique_id=100000024]
 layout_mode = 0
-offset_left = 165.0
-offset_top = 67.0
-offset_right = 174.0
-offset_bottom = 71.0
+offset_left = 168.0
+offset_top = 72.0
+offset_right = 176.0
+offset_bottom = 76.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "X"
 label_settings = SubResource("LabelSettings_letra")
@@ -318,10 +326,10 @@ horizontal_alignment = 1
 
 [node name="Y" type="Label" parent="TextureRect" unique_id=100000025]
 layout_mode = 0
-offset_left = 53.0
-offset_top = 83.0
-offset_right = 62.0
-offset_bottom = 87.0
+offset_left = 56.0
+offset_top = 88.0
+offset_right = 65.0
+offset_bottom = 92.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "Y"
 label_settings = SubResource("LabelSettings_letra")
@@ -329,10 +337,10 @@ horizontal_alignment = 1
 
 [node name="Z" type="Label" parent="TextureRect" unique_id=100000026]
 layout_mode = 0
-offset_left = 69.0
-offset_top = 83.0
-offset_right = 78.0
-offset_bottom = 87.0
+offset_left = 72.0
+offset_top = 88.0
+offset_right = 81.0
+offset_bottom = 92.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "Z"
 label_settings = SubResource("LabelSettings_letra")
@@ -340,10 +348,10 @@ horizontal_alignment = 1
 
 [node name="DEL" type="Label" parent="TextureRect" unique_id=100000027]
 layout_mode = 0
-offset_left = 101.0
-offset_top = 83.0
-offset_right = 114.0
-offset_bottom = 87.0
+offset_left = 104.0
+offset_top = 88.0
+offset_right = 117.0
+offset_bottom = 92.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "DEL"
 label_settings = SubResource("LabelSettings_letra")
@@ -351,32 +359,32 @@ horizontal_alignment = 1
 
 [node name="INS" type="Label" parent="TextureRect" unique_id=100000028]
 layout_mode = 0
-offset_left = 117.0
-offset_top = 83.0
-offset_right = 130.0
-offset_bottom = 87.0
+offset_left = 120.0
+offset_top = 88.0
+offset_right = 133.0
+offset_bottom = 92.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "INS"
-label_settings = SubResource("LabelSettings_letra")
+label_settings = SubResource("LabelSettings_5o5x5")
 horizontal_alignment = 1
 
 [node name="FRD" type="Label" parent="TextureRect" unique_id=100000029]
 layout_mode = 0
-offset_left = 133.0
-offset_top = 83.0
-offset_right = 146.0
-offset_bottom = 87.0
+offset_left = 136.0
+offset_top = 88.0
+offset_right = 149.0
+offset_bottom = 92.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "FRD"
-label_settings = SubResource("LabelSettings_letra")
+label_settings = SubResource("LabelSettings_5o5x5")
 horizontal_alignment = 1
 
 [node name="END" type="Label" parent="TextureRect" unique_id=100000030]
 layout_mode = 0
-offset_left = 149.0
-offset_top = 83.0
-offset_right = 162.0
-offset_bottom = 87.0
+offset_left = 152.0
+offset_top = 88.0
+offset_right = 165.0
+offset_bottom = 92.0
 theme_override_fonts/font = ExtResource("2_font")
 text = "END"
 label_settings = SubResource("LabelSettings_letra")

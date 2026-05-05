@@ -18,24 +18,38 @@ var col_x = [49, 65, 81, 97, 113, 129, 145, 161]
 var row_y = [33, 49, 65, 81]
 
 func _ready():
+	asteriscos.text = "****"
 	_atualizar_highlight()
 
+func _atualizar_display():
+	asteriscos.text = entrada + "*".repeat(4 - entrada.length())
+
+const SKIP_CELLS = ["", "INS", "FRD"]
+
 func _atualizar_highlight():
-	cursor.position = Vector2(col_x[col], row_y[row])
+	cursor.position = Vector2(col_x[col] + 3, row_y[row] + 4)
+
+func _mover(dcol: int, drow: int):
+	var c = col
+	var r = row
+	for _i in range(8):
+		c = (c + dcol + 8) % 8
+		r = (r + drow + 4) % 4
+		if grid[r][c] not in SKIP_CELLS:
+			col = c
+			row = r
+			break
+	_atualizar_highlight()
 
 func _input(_event):
 	if Input.is_action_just_pressed("ui_right"):
-		col = (col + 1) % 8
-		_atualizar_highlight()
+		_mover(1, 0)
 	if Input.is_action_just_pressed("ui_left"):
-		col = (col - 1 + 8) % 8
-		_atualizar_highlight()
+		_mover(-1, 0)
 	if Input.is_action_just_pressed("ui_down"):
-		row = (row + 1) % 4
-		_atualizar_highlight()
+		_mover(0, 1)
 	if Input.is_action_just_pressed("ui_up"):
-		row = (row - 1 + 4) % 4
-		_atualizar_highlight()
+		_mover(0, -1)
 	if Input.is_action_just_pressed("ui_accept"):
 		var letra = grid[row][col]
 		match letra:
@@ -44,14 +58,14 @@ func _input(_event):
 			"DEL":
 				if entrada.length() > 0:
 					entrada = entrada.substr(0, entrada.length() - 1)
-					asteriscos.text = "*".repeat(entrada.length())
+					_atualizar_display()
 			"INS", "FRD", "":
 				pass
 			_:
 				if entrada.length() < 4:
 					entrada += letra
-					asteriscos.text = "*".repeat(entrada.length())
+					_atualizar_display()
 	if Input.is_action_just_pressed("ui_cancel"):
 		if entrada.length() > 0:
 			entrada = entrada.substr(0, entrada.length() - 1)
-			asteriscos.text = "*".repeat(entrada.length())
+			_atualizar_display()

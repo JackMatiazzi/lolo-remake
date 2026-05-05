@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://c3hubu3exrfk5"]
+
+[ext_resource type="Texture2D" uid="uid://esdyupc74jjb" path="res://assets/window/Final_Game.png" id="1_endgm"]
+[ext_resource type="Script" uid="uid://bkwy8mcqqx7u2" path="res://scripts/ui/end_game.gd" id="2_endgm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_text"]
+line_spacing = -5.0
+paragraph_spacing = 1.0
+font_size = 10
+font_color = Color(0, 0, 0, 1)
+
+[node name="end_game" type="Control" unique_id=696883671]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 224.0
+offset_bottom = 224.0
+script = ExtResource("2_endgm")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1514406502]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 224.0
+offset_bottom = 184.0
+texture = ExtResource("1_endgm")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="." unique_id=1613043662]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 81.0
+offset_right = 196.0
+offset_bottom = 140.0
+text = "VOCE TERMINOU
+O REMAKE!
+
+PARABENS!"
+label_settings = SubResource("LabelSettings_text")

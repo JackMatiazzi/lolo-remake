@@ -28,6 +28,9 @@ func _ao_morrer():
 	var hud = get_tree().get_first_node_in_group("hud")
 	if hud:
 		hud.set_vidas(vida)
+	var idx = levels.find(get_tree().current_scene.scene_file_path)
+	if idx >= 0:
+		level_atual_index = idx
 	if vida <= 0:
 		veio_de_game_over = true
 		Fade.mudar_cena("res://scenes/ui/game_over.tscn")
@@ -43,7 +46,7 @@ func proxima_fase():
 
 func ir_para_senha(senha: String):
 	if senhas.has(senha):
-		senha = senhas[level_atual_index]
+		level_atual_index = senhas[senha]
 		vida = 5
 		veio_de_game_over = false
 		Fade.mudar_cena(levels[level_atual_index])
