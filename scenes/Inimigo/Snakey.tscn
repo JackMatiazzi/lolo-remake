@@ -69,7 +69,7 @@ size = Vector2(16, 16)
 
 [node name="Snakey" type="CharacterBody2D" unique_id=1775185825 groups=["inimigo"]]
 collision_layer = 4
-collision_mask = 15
+collision_mask = 31
 script = ExtResource("1_5f1gi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1722524849]
@@ -84,7 +84,7 @@ shape = SubResource("RectangleShape2D_5f1gi")
 rect = Rect2(-8, -8, 16, 16)
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1816116072]
-collision_mask = 15
+collision_mask = 31
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

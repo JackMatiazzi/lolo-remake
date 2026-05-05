@@ -127,7 +127,7 @@ size = Vector2(16, 16)
 
 [node name="Gol" type="CharacterBody2D" unique_id=169078184 groups=["inimigo"]]
 collision_layer = 4
-collision_mask = 11
+collision_mask = 27
 script = ExtResource("1_ej7wy")
 bullet_scene = ExtResource("2_1e1n2")
 
@@ -139,6 +139,10 @@ animation = &"right_acordado"
 rect = Rect2(-8, -8, 16, 16)
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=2080992176]
+target_position = Vector2(8, 0)
+collision_mask = 31
+
+[node name="RayCast2D2" type="RayCast2D" parent="." unique_id=2068691796]
 target_position = Vector2(8, 0)
 collision_mask = 2
 

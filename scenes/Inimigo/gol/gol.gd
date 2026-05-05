@@ -2,6 +2,7 @@ extends Inimigo
 
 @export var bullet_scene : PackedScene
 @export var direcao = Vector2.ZERO
+@onready var ray_lolo: RayCast2D = $RayCast2D2
 var bala_atual = null
 var bateu := false
 var acordado = false
@@ -13,6 +14,9 @@ func _physics_process(delta):
 	if voando:
 		velocity = velocidade_morte
 		move_and_slide()
+		return
+		
+	if pearl:
 		return
 	
 	if bateu:
@@ -27,9 +31,9 @@ func _sentinela():
 	if bala_atual != null:
 		return
 	set_animecao(direcao)
-	ray.target_position = direcao * (tile_size * 84) 
+	ray_lolo.target_position = direcao * (tile_size * 84) 
 	
-	if ray.is_colliding() and ray.get_collider() == jogador:
+	if ray_lolo.is_colliding() and ray_lolo.get_collider() == jogador:
 		if acordado:
 			_atirar()
 	
