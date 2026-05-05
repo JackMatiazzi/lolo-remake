@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://lolo00000001" path="res://scenes/personagem/lolo.tscn" id="4_ogj6a"]
 [ext_resource type="PackedScene" uid="uid://72lrog373q47" path="res://scenes/game/bau_aberto.tscn" id="4_rej77"]
 [ext_resource type="PackedScene" uid="uid://b0qby3c6tvior" path="res://scenes/ui/hud.tscn" id="5_anwe6"]
+[ext_resource type="PackedScene" uid="uid://bwfa1j4hx36pr" path="res://scenes/game/spawner.tscn" id="6_um320"]
+[ext_resource type="PackedScene" uid="uid://byfakhwe1i0o7" path="res://scenes/Inimigo/skull.tscn" id="7_glw47"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ogj6a"]
 size = Vector2(16, 8)
@@ -19,6 +21,7 @@ tile_map_data = PackedByteArray("AAAMAA0AAQAHAAMAAAAMAAwAAQAEAAEAAAAMAAsAAQAEAAE
 
 [node name="Coração" parent="." unique_id=1491238716 instance=ExtResource("2_vmkp1")]
 position = Vector2(24, 136)
+magic_shot = true
 
 [node name="Coração2" parent="." unique_id=756885404 instance=ExtResource("2_vmkp1")]
 position = Vector2(24, 104)
@@ -33,28 +36,39 @@ position = Vector2(136, 120)
 position = Vector2(136, 136)
 
 [node name="Bloco_Esmeralda" parent="." unique_id=1984467136 instance=ExtResource("3_w6h2s")]
-position = Vector2(136, 184)
-
-[node name="Bloco_Esmeralda2" parent="." unique_id=1629390432 instance=ExtResource("3_w6h2s")]
-position = Vector2(56, 168)
-
-[node name="Bloco_Esmeralda3" parent="." unique_id=1648299007 instance=ExtResource("3_w6h2s")]
-position = Vector2(168, 104)
-
-[node name="Bloco_Esmeralda4" parent="." unique_id=1348740086 instance=ExtResource("3_w6h2s")]
-position = Vector2(168, 120)
-
-[node name="Bloco_Esmeralda5" parent="." unique_id=717634025 instance=ExtResource("3_w6h2s")]
-position = Vector2(168, 136)
-
-[node name="Bloco_Esmeralda6" parent="." unique_id=1917900636 instance=ExtResource("3_w6h2s")]
 position = Vector2(56, 72)
 
-[node name="Bloco_Esmeralda7" parent="." unique_id=1348732270 instance=ExtResource("3_w6h2s")]
+[node name="Bloco_Esmeralda2" parent="." unique_id=1987069821 instance=ExtResource("3_w6h2s")]
 position = Vector2(136, 56)
+
+[node name="Bloco_Esmeralda3" parent="." unique_id=1849871371 instance=ExtResource("3_w6h2s")]
+position = Vector2(168, 104)
+
+[node name="Bloco_Esmeralda4" parent="." unique_id=1013934704 instance=ExtResource("3_w6h2s")]
+position = Vector2(168, 120)
+
+[node name="Bloco_Esmeralda5" parent="." unique_id=1128531039 instance=ExtResource("3_w6h2s")]
+position = Vector2(168, 136)
+
+[node name="Bloco_Esmeralda6" parent="." unique_id=104836974 instance=ExtResource("3_w6h2s")]
+position = Vector2(136, 184)
+
+[node name="Bloco_Esmeralda7" parent="." unique_id=298335737 instance=ExtResource("3_w6h2s")]
+position = Vector2(56, 168)
 
 [node name="Bau_Aberto" parent="." unique_id=1249629688 instance=ExtResource("4_rej77")]
 position = Vector2(88, 112)
+
+[node name="Spawner" parent="." unique_id=2011310142 instance=ExtResource("6_um320")]
+
+[node name="Skull" parent="Spawner" unique_id=1775185825 instance=ExtResource("7_glw47")]
+position = Vector2(72, 40)
+
+[node name="Skull2" parent="Spawner" unique_id=1785396704 instance=ExtResource("7_glw47")]
+position = Vector2(152, 120)
+
+[node name="Skull3" parent="Spawner" unique_id=1147141296 instance=ExtResource("7_glw47")]
+position = Vector2(72, 200)
 
 [node name="Lolo" parent="." unique_id=1744060228 instance=ExtResource("4_ogj6a")]
 position = Vector2(104, 200)
