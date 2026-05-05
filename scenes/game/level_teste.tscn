@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c5ye7nyvbh5ej" path="res://scenes/game/sala_base.tscn" id="1_ehwls"]
 [ext_resource type="PackedScene" uid="uid://lolo00000001" path="res://scenes/personagem/lolo.tscn" id="2_7ywai"]
-[ext_resource type="PackedScene" uid="uid://hl330pdqq1jq" path="res://scenes/Inimigo/snakey.tscn" id="3_7ywai"]
+[ext_resource type="PackedScene" uid="uid://hl330pdqq1jq" path="res://scenes/Inimigo/Snakey.tscn" id="3_7ywai"]
 [ext_resource type="PackedScene" uid="uid://b0qby3c6tvior" path="res://scenes/ui/hud.tscn" id="4_s362i"]
 
 [node name="LevelTeste" type="Node2D" unique_id=1014552644]
