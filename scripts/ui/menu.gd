@@ -27,3 +27,5 @@ func _input(_event):
 			if GameMaster.veio_de_game_over:
 				GameMaster.vida = 5
 				Fade.mudar_cena(GameMaster.levels[GameMaster.level_atual_index])
+			else:
+				Fade.mudar_cena("res://scenes/ui/senha.tscn")

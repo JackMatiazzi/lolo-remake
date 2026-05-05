@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://lolo00000001" path="res://scenes/personagem/lolo.tscn" id="4_fiq81"]
 [ext_resource type="PackedScene" uid="uid://b0qby3c6tvior" path="res://scenes/ui/hud.tscn" id="5_l37oo"]
 [ext_resource type="PackedScene" uid="uid://72lrog373q47" path="res://scenes/game/bau_aberto.tscn" id="6_qpwj6"]
+[ext_resource type="PackedScene" uid="uid://bwfa1j4hx36pr" path="res://scenes/game/spawner.tscn" id="8_3p04p"]
+[ext_resource type="PackedScene" uid="uid://dor3020t502dj" path="res://scenes/Inimigo/gol/Gol.tscn" id="9_qsp8v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fiq81"]
 size = Vector2(16, 8)
@@ -32,6 +34,7 @@ magic_shot = true
 
 [node name="Bloco_Esmeralda" parent="." unique_id=1984467136 instance=ExtResource("3_ra442")]
 position = Vector2(120, 184)
+collision_mask = 7
 
 [node name="Bau_Aberto" parent="." unique_id=1249629688 instance=ExtResource("6_qpwj6")]
 position = Vector2(24, 112)
@@ -49,5 +52,15 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor_Level" unique_id=1965310915]
 shape = SubResource("RectangleShape2D_fiq81")
+
+[node name="Spawner" parent="." unique_id=2011310142 instance=ExtResource("8_3p04p")]
+
+[node name="Gol" parent="Spawner" unique_id=169078184 instance=ExtResource("9_qsp8v")]
+position = Vector2(24, 168)
+direcao = Vector2(1, 0)
+
+[node name="Gol2" parent="Spawner" unique_id=576273699 instance=ExtResource("9_qsp8v")]
+position = Vector2(72, 40)
+direcao = Vector2(0, 1)
 
 [connection signal="body_entered" from="Sensor_Level" to="." method="_on_sensor_level_body_entered"]

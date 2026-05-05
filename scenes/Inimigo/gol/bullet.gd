@@ -1,12 +1,7 @@
 extends Area2D
 
-@export var velocidade = 100 # Velocidade do projétil
+@export var velocidade = 100 
 var direcao = Vector2.ZERO
-
-
-func _ready():
-	await get_tree().create_timer(3.0).timeout
-	queue_free()
 
 func _physics_process(delta) -> void:
 		
@@ -15,8 +10,7 @@ func _physics_process(delta) -> void:
 
 func set_direcao(dir: Vector2):
 	direcao = dir
-	
-	# Ajusta a animação baseada na direção recebida
+
 	if dir == Vector2.UP: $AnimatedSprite2D.play("up")
 	elif dir == Vector2.DOWN: $AnimatedSprite2D.play("down")
 	elif dir == Vector2.LEFT: $AnimatedSprite2D.play("left")
@@ -25,7 +19,6 @@ func set_direcao(dir: Vector2):
 func _bateu(dir: Vector2):
 	direcao = dir
 	
-	# Ajusta a animação baseada na direção recebida
 	if dir == Vector2.UP: $AnimatedSprite2D.play("up_bateu")
 	elif dir == Vector2.DOWN: $AnimatedSprite2D.play("down_bateu")
 	elif dir == Vector2.LEFT: $AnimatedSprite2D.play("left_bateu")

@@ -131,7 +131,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6w0v4"]
-size = Vector2(10, 16)
+size = Vector2(16, 10)
 
 [node name="Bullet" type="Area2D" unique_id=1343951907 groups=["inimigo"]]
 collision_mask = 3
@@ -139,9 +139,13 @@ script = ExtResource("2_wuumk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=138394039]
 sprite_frames = SubResource("SpriteFrames_5lsa5")
-animation = &"up"
+animation = &"right"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1659494911]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1699792396]
+rect = Rect2(-7, -4, 14, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1400239832]
 shape = SubResource("RectangleShape2D_6w0v4")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

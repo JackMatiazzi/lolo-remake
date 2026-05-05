@@ -1,19 +1,16 @@
 extends Inimigo
 
 @export var bullet_scene : PackedScene
+@export var direcao = Vector2.ZERO
 var bala_atual = null
 var bateu := false
-@export var direcao = Vector2.ZERO
-var acordado = true
-
-
+var acordado = false
 
 func atualizar_direcao_do_olhar():
 	pass
 
 func _physics_process(delta):
 	if voando:
-		# Aplica a velocidade de morte
 		velocity = velocidade_morte
 		move_and_slide()
 		return
@@ -24,23 +21,19 @@ func _physics_process(delta):
 
 func _on_level_todos_coletados():
 	acordado = true
+	set_animecao(direcao)
 
 func _sentinela():
-	#if bala_atual != null:
-		#return
-	
+	if bala_atual != null:
+		return
 	set_animecao(direcao)
-	#se tiver alinhado Iniciar func atirar
-	var alinhado_x = abs(jogador.global_position.x - global_position.x) < 8
+	ray.target_position = direcao * (tile_size * 84) 
 	
-	if alinhado_x :
-		bateu = true
-		if acordado :
+	if ray.is_colliding() and ray.get_collider() == jogador:
+		if acordado:
 			_atirar()
-			
+	
 func _atirar():
-
-	var direcao = Vector2.ZERO
 
 	if abs(jogador.global_position.x - global_position.x) < 8:
 		if jogador.global_position.y > global_position.y:
@@ -55,7 +48,7 @@ func _atirar():
 			direcao = Vector2.LEFT
 
 	var bala = bullet_scene.instantiate()
-	bala.global_position = global_position + direcao * 16
+	bala.global_position = global_position + direcao * 8
 	bala.set_direcao(direcao)
 
 	bala_atual = bala
