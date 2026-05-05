@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://72lrog373q47" path="res://scenes/game/bau_aberto.tscn" id="4_hldbq"]
 [ext_resource type="PackedScene" uid="uid://lolo00000001" path="res://scenes/personagem/lolo.tscn" id="4_laj7o"]
 [ext_resource type="PackedScene" uid="uid://b0qby3c6tvior" path="res://scenes/ui/hud.tscn" id="5_fi56y"]
+[ext_resource type="PackedScene" uid="uid://dryw50mqnrpoq" path="res://Ghost.tscn" id="8_mxx4w"]
 
 [node name="Level_5" type="Node2D" unique_id=677638777]
 script = ExtResource("1_fsnos")
@@ -50,3 +51,9 @@ position = Vector2(104, 200)
 [node name="Hud" parent="." unique_id=1198646795 instance=ExtResource("5_fi56y")]
 offset = Vector2(208, 0)
 transform = Transform2D(1, 0, 0, 1, 208, 0)
+
+[node name="Node2D" parent="." unique_id=669171657 instance=ExtResource("8_mxx4w")]
+position = Vector2(72, 120)
+
+[node name="Node2D2" parent="." unique_id=1875700153 instance=ExtResource("8_mxx4w")]
+position = Vector2(136, 120)
