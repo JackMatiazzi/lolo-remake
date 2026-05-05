@@ -50,9 +50,15 @@ position = Vector2(104, 112)
 
 [node name="Blocky" parent="Spawner" unique_id=1775185825 instance=ExtResource("7_tqnj0")]
 position = Vector2(72, 120)
+delay_pulo = 0.04
+tile_size = 8
+walk_speed = 0.1
 
 [node name="Blocky2" parent="Spawner" unique_id=125091116 instance=ExtResource("7_tqnj0")]
 position = Vector2(136, 120)
+delay_pulo = 0.04
+tile_size = 8
+walk_speed = 0.1
 
 [node name="Lolo" parent="." unique_id=1744060228 instance=ExtResource("4_laj7o")]
 position = Vector2(104, 200)

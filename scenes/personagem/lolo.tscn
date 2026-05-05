@@ -294,7 +294,7 @@ script = ExtResource("1_xnrtv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1067563436]
 sprite_frames = SubResource("SpriteFrames_mfqes")
-animation = &"walk_down"
+animation = &"walk_right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=420602305]
 shape = SubResource("RectangleShape2D_lolo")

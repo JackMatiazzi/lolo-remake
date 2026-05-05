@@ -169,6 +169,19 @@ func atirar():
 		get_tree().current_scene.add_child(tiro_instancia)
 	else:
 		print("Sem munição!")
+		
+func receber_empurrao(direction: Vector2) -> bool:
+	if is_moving or morreu:
+		return false
+
+	# Verifica se há parede atrás do Lolo antes de aceitar o empurrão
+	var obstaculo = check_collision(direction)
+	
+	if obstaculo == null:
+		move_in_grid(direction)
+		return true
+	
+	return false # Lolo está prensado contra a parede
 
 func executar_morte():
 	morreu = true
