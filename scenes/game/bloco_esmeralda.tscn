@@ -11,15 +11,16 @@ region = Rect2(-0.19034576, 48.78326, 16.21568, 16.21568)
 size = Vector2(16, 16)
 
 [node name="Bloco_Esmeralda" type="CharacterBody2D" unique_id=1984467136]
-collision_mask = 7
+collision_layer = 8
+collision_mask = 15
 script = ExtResource("1_syeob")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1045136251]
 texture = SubResource("AtlasTexture_syeob")
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1459184053]
-target_position = Vector2(0, 8)
-collision_mask = 7
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=217278273]
 shape = SubResource("RectangleShape2D_syeob")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1459184053]
+target_position = Vector2(0, 8)
+collision_mask = 15

@@ -4,7 +4,6 @@ extends Area2D
 var direcao = Vector2.ZERO
 
 func _physics_process(delta) -> void:
-		
 	position += direcao * velocidade * delta
 	
 
@@ -25,10 +24,24 @@ func _bateu(dir: Vector2):
 	elif dir == Vector2.RIGHT: $AnimatedSprite2D.play("right_bateu")
 	
 func _on_body_entered(body: Node2D) -> void:
+	# 1. ANULAÇÃO IMEDIATA
+	# Desativa o monitoramento para que o sinal 'body_entered' não dispare de novo
+	set_deferred("monitoring", false) 
+	# Zera a velocidade para o impacto ser no lugar certo
+	velocidade = 0 
+	
 	print("Tiro atingiu: ", body.name)
-	if body.has_method("executar_morte"):
-		_bateu(direcao)
-		body.executar_morte()
-		queue_free()
+	
+	# 2. EXECUÇÃO DA LÓGICA
 	_bateu(direcao)
+	
+	# Se o alvo for destrutível, chama a morte dele
+	if body.has_method("executar_morte"):
+		body.executar_morte()
+	
+	# 3. ESPERA A ANIMAÇÃO
+	# Espera o tiro "explodir" antes de sumir
+	await $AnimatedSprite2D.animation_finished
+	
+	# 4. LIMPEZA
 	queue_free()
