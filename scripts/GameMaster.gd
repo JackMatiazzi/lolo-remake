@@ -42,7 +42,7 @@ func proxima_fase():
 	if level_atual_index < levels.size():
 		Fade.mudar_cena(levels[level_atual_index])
 	else:
-		Fade.mudar_cena("res://scenes/ui/menu.tscn")
+		Fade.mudar_cena("res://scenes/ui/end_game.tscn")
 
 func ir_para_senha(senha: String):
 	if senhas.has(senha):
