@@ -11,19 +11,23 @@ func atualizar_direcao_do_olhar():
 	pass
 
 func _physics_process(delta):
-	if voando:
-		velocity = velocidade_morte
-		move_and_slide()
+	if voando or pearl or not atualizar:
+		super(delta)
 		return
-		
-	if pearl:
-		return
+	#if voando:
+		#velocity = velocidade_morte
+		#move_and_slide()
+		#return
+		#
+	#if pearl:
+		#return
 	
 	if bateu:
 		return
 	_sentinela()
 
 func _on_level_todos_coletados():
+	atualizar = false
 	acordado = true
 	set_animecao(direcao)
 
@@ -63,7 +67,6 @@ func _on_bala_sumiu():
 	bala_atual = null
 	
 func set_animecao(dir: Vector2):
-	direcao = dir
 	if acordado:
 		# Ajusta a animação baseada na direção recebida
 		if dir == Vector2.UP: $AnimatedSprite2D.play("up_acordado")
@@ -75,3 +78,4 @@ func set_animecao(dir: Vector2):
 		elif dir == Vector2.DOWN: $AnimatedSprite2D.play("down")
 		elif dir == Vector2.LEFT: $AnimatedSprite2D.play("left")
 		elif dir == Vector2.RIGHT: $AnimatedSprite2D.play("right")
+	direcao = dir

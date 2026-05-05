@@ -12,7 +12,7 @@ size = Vector2(16, 16)
 
 [node name="Bloco_Esmeralda" type="CharacterBody2D" unique_id=1984467136]
 collision_layer = 16
-collision_mask = 15
+collision_mask = 31
 script = ExtResource("1_syeob")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1045136251]
@@ -23,4 +23,4 @@ shape = SubResource("RectangleShape2D_syeob")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1459184053]
 target_position = Vector2(0, 8)
-collision_mask = 15
+collision_mask = 31
