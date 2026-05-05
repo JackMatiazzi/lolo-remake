@@ -131,7 +131,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6w0v4"]
-size = Vector2(16, 16)
+size = Vector2(14, 14)
 
 [node name="Bullet" type="Area2D" unique_id=1343951907 groups=["inimigo"]]
 collision_mask = 26

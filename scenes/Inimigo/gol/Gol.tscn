@@ -135,7 +135,10 @@ bullet_scene = ExtResource("2_1e1n2")
 sprite_frames = SubResource("SpriteFrames_estwv")
 animation = &"right_acordado"
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1898968765]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2059783725]
+shape = SubResource("RectangleShape2D_1e1n2")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1264730455]
 rect = Rect2(-8, -8, 16, 16)
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=2080992176]
@@ -148,5 +151,5 @@ collision_mask = 2
 
 [node name="Timer" type="Timer" parent="." unique_id=2050295500]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2059783725]
-shape = SubResource("RectangleShape2D_1e1n2")
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
