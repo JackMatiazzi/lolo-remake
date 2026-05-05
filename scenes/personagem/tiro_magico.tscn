@@ -58,7 +58,7 @@ animations = [{
 size = Vector2(4, 6)
 
 [node name="Tiro_magico" type="Area2D" unique_id=1401855963 groups=["tiro"]]
-collision_mask = 5
+collision_mask = 13
 script = ExtResource("1_8etje")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2125812165 groups=["tiro"]]

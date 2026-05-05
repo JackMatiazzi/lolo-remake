@@ -282,7 +282,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lolo"]
-size = Vector2(16, 16)
+size = Vector2(14, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xnrtv"]
 size = Vector2(8, 8)
@@ -305,7 +305,7 @@ one_shot = true
 autostart = true
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=19801723]
-collision_mask = 13
+collision_mask = 29
 hit_from_inside = true
 
 [node name="Sensor" type="Area2D" parent="." unique_id=1318291770]
