@@ -42,11 +42,9 @@ position = Vector2(24, 112)
 
 [node name="Gol" parent="Spawner" unique_id=169078184 instance=ExtResource("9_qsp8v")]
 position = Vector2(24, 168)
-direcao = Vector2(1, 0)
 
 [node name="Gol2" parent="Spawner" unique_id=848948474 instance=ExtResource("9_qsp8v")]
 position = Vector2(72, 40)
-direcao = Vector2(0, 1)
 
 [node name="Lolo" parent="." unique_id=1744060228 instance=ExtResource("4_fiq81")]
 position = Vector2(88, 200)

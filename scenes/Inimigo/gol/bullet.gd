@@ -1,12 +1,11 @@
 extends Area2D
 
-@export var velocidade = 100 
+@export var velocidade = 150
 var direcao = Vector2.ZERO
 
 func _physics_process(delta) -> void:
 	position += direcao * velocidade * delta
 	
-
 func set_direcao(dir: Vector2):
 	direcao = dir
 
