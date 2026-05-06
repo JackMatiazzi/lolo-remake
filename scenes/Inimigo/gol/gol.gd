@@ -7,6 +7,17 @@ var bala_atual = null
 var bateu := false
 var acordado = false
 
+func _ready() -> void:
+	var diff = jogador.global_position - global_position
+	# Verificamos qual distância é maior para decidir se ele olha 
+	# horizontalmente ou verticalmente
+	if abs(diff.x) > abs(diff.y):
+		# Lolo está mais longe nos lados
+		direcao = Vector2.RIGHT if diff.x > 0 else Vector2.LEFT
+	else:
+		# Lolo está mais longe em cima ou baixo
+		direcao = Vector2.DOWN if diff.y > 0 else Vector2.UP
+
 func atualizar_direcao_do_olhar():
 	pass
 
@@ -35,28 +46,15 @@ func _sentinela():
 	
 	if ray_lolo.is_colliding() and ray_lolo.get_collider() == jogador:
 		if acordado:
-			_atirar()
+			_atirar(direcao)
 	
-func _atirar():
-
-	if abs(jogador.global_position.x - global_position.x) < 8:
-		if jogador.global_position.y > global_position.y:
-			direcao = Vector2.DOWN
-		else:
-			direcao = Vector2.UP
-
-	elif abs(jogador.global_position.y - global_position.y) < 8:
-		if jogador.global_position.x > global_position.x:
-			direcao = Vector2.RIGHT
-		else:
-			direcao = Vector2.LEFT
-
+func _atirar(dir):
 	var bala = bullet_scene.instantiate()
-	bala.global_position = global_position + direcao * 8
+	bala.global_position = global_position + dir * 4
 	bala.set_direcao(direcao)
 
 	bala_atual = bala
-	bala.tree_exited.connect(_on_bala_sumiu)
+	bala_atual.tree_exited.connect(_on_bala_sumiu)
 	get_tree().current_scene.add_child(bala)
 	
 func _on_bala_sumiu():
