@@ -11,23 +11,19 @@ func atualizar_direcao_do_olhar():
 	pass
 
 func _physics_process(delta):
-	if voando or pearl or not atualizar:
-		super(delta)
+	if voando:
+		velocity = velocidade_morte
+		move_and_slide()
 		return
-	#if voando:
-		#velocity = velocidade_morte
-		#move_and_slide()
-		#return
-		#
-	#if pearl:
-		#return
+		
+	if pearl:
+		return
 	
 	if bateu:
 		return
 	_sentinela()
 
 func _on_level_todos_coletados():
-	atualizar = false
 	acordado = true
 	set_animecao(direcao)
 
