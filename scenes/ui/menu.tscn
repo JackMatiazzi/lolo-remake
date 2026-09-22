@@ -47,7 +47,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cghgw")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 12.0
 }]
@@ -105,23 +105,34 @@ scale = Vector2(0.99999976, 0.99999994)
 sprite_frames = SubResource("SpriteFrames_1pxh0")
 frame_progress = 0.10216925
 
-[node name="iniciar" type="Label" parent="Fundo" unique_id=360929695]
+[node name="modo2d" type="Label" parent="Fundo" unique_id=413990877]
 layout_mode = 1
-offset_left = 44.0
+offset_left = 43.0
 offset_top = 40.0
-offset_right = 140.0
+offset_right = 134.0
 offset_bottom = 48.0
 theme_override_fonts/font = ExtResource("3_c2n5p")
 theme_override_font_sizes/font_size = 1
-text = "Iniciar"
+text = "iniciar 2d"
+label_settings = SubResource("LabelSettings_c2n5p")
+
+[node name="modo2d2" type="Label" parent="Fundo" unique_id=793401772]
+layout_mode = 1
+offset_left = 44.0
+offset_top = 56.0
+offset_right = 135.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("3_c2n5p")
+theme_override_font_sizes/font_size = 1
+text = "iniciar 3d"
 label_settings = SubResource("LabelSettings_c2n5p")
 
 [node name="senha" type="Label" parent="Fundo" unique_id=305017467]
 layout_mode = 0
 offset_left = 44.0
-offset_top = 56.0
+offset_top = 72.0
 offset_right = 113.0
-offset_bottom = 68.0
+offset_bottom = 84.0
 theme_override_fonts/font = ExtResource("3_c2n5p")
 theme_override_font_sizes/font_size = 1
 text = "Senha"
@@ -143,10 +154,10 @@ offset_top = 24.0
 offset_right = 216.0
 offset_bottom = 58.0
 theme_override_font_sizes/font_size = 1
-text = "© 2026 Discipulos COMPANY - FACCAT
-AN-DR-E B-ARTZEN
+text = "© 2026 Discipulos COMPANY   FACCAT
+AN DR E B ARTZEN
 JACKSON MATIAZZI
-JOSE MACIEL 
+JOSE MACIEL
 Nicole Busa
 "
 label_settings = SubResource("LabelSettings_cx0sj")

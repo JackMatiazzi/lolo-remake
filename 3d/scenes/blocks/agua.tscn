@@ -1,0 +1,46 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Texture2D" path="res://3d/assets/textures_3d/agua_frame0.png" id="tex_frame0"]
+[ext_resource type="Texture2D" path="res://3d/assets/textures_3d/agua_frame1.png" id="tex_frame1"]
+[ext_resource type="Texture2D" path="res://3d/assets/textures_3d/agua_frame2.png" id="tex_frame2"]
+[ext_resource type="Texture2D" path="res://3d/assets/textures_3d/agua_frame3.png" id="tex_frame3"]
+[ext_resource type="Texture2D" path="res://3d/assets/textures_3d/agua_frame4.png" id="tex_frame4"]
+[ext_resource type="Texture2D" path="res://3d/assets/textures_3d/agua_frame5.png" id="tex_frame5"]
+
+[sub_resource type="AnimatedTexture" id="anim_agua"]
+frames = 6
+speed_scale = 2.0
+frame_0/texture = ExtResource("tex_frame0")
+frame_0/duration = 1.0
+frame_1/texture = ExtResource("tex_frame1")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("tex_frame2")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("tex_frame3")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("tex_frame4")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("tex_frame5")
+frame_5/duration = 1.0
+
+[sub_resource type="StandardMaterial3D" id="mat_agua"]
+texture_filter = 0
+albedo_texture = SubResource("anim_agua")
+roughness = 0.2
+metallic = 0.1
+uv1_scale = Vector3(3, 3, 3)
+
+[sub_resource type="BoxMesh" id="mesh_agua"]
+material = SubResource("mat_agua")
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxShape3D" id="shape_agua"]
+size = Vector3(2, 2, 2)
+
+[node name="Agua" type="MeshInstance3D"]
+mesh = SubResource("mesh_agua")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("shape_agua")

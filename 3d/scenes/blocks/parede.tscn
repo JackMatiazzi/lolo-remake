@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Texture2D" path="res://3d/assets/textures_3d/parede.png" id="tex_parede"]
+
+[sub_resource type="StandardMaterial3D" id="mat_parede"]
+texture_filter = 0
+albedo_texture = ExtResource("tex_parede")
+roughness = 1.0
+uv1_scale = Vector3(3, 3, 3)
+
+[sub_resource type="BoxMesh" id="mesh_parede"]
+material = SubResource("mat_parede")
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxShape3D" id="shape_parede"]
+size = Vector3(2, 2, 2)
+
+[node name="Parede" type="MeshInstance3D"]
+mesh = SubResource("mesh_parede")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("shape_parede")

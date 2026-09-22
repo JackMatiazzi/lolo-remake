@@ -1,3 +1,20 @@
-# Godot 4+ specific ignores
+# Godot
 .godot/
 /android/
+
+# Builds
+*.exe
+*.pck
+/build/
+/builds/
+/dist/
+
+# Temporários
+*.tmp
+*~
+*.bak
+*.blend1
+/.tmp/
+
+# Blender
+*.blend
