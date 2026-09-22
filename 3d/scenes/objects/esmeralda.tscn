@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/models/props/esmeralda.glb" id="1_modelo"]
+[ext_resource type="Script" path="res://3d/scripts/esmeralda.gd" id="2_script"]
+
+[sub_resource type="BoxShape3D" id="shape_esmeralda"]
+size = Vector3(2.0, 2.0, 2.0)
+
+[node name="Esmeralda" type="CharacterBody3D" groups=["esmeraldas", "empurravel"]]
+script = ExtResource("2_script")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("shape_esmeralda")
+
+[node name="Modelo" parent="." instance=ExtResource("1_modelo")]

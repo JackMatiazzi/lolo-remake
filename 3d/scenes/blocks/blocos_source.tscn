@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="PackedScene" path="res://3d/scenes/blocks/parede.tscn" id="1_parede"]
+[ext_resource type="PackedScene" path="res://3d/scenes/blocks/agua.tscn" id="3_agua"]
+[ext_resource type="PackedScene" path="res://3d/scenes/blocks/tijolo_escuro.tscn" id="4_tijolo_escuro"]
+[ext_resource type="PackedScene" path="res://3d/scenes/objects/arbusto_verde.tscn" id="5_arbusto_verde"]
+[ext_resource type="PackedScene" path="res://3d/scenes/objects/pedra_amarela.tscn" id="6_pedra_amarela"]
+[ext_resource type="PackedScene" path="res://3d/scenes/objects/ponte.tscn" id="8_ponte"]
+
+[node name="BlocosSource" type="Node3D"]
+
+[node name="Parede" type="Node3D" parent="."]
+
+[node name="Parede" parent="Parede" instance=ExtResource("1_parede")]
+
+[node name="Agua" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
+[node name="Agua" parent="Agua" instance=ExtResource("3_agua")]
+
+[node name="TijoloEscuro" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+
+[node name="TijoloEscuro" parent="TijoloEscuro" instance=ExtResource("4_tijolo_escuro")]
+
+[node name="ArbustoVerde" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+
+[node name="ArbustoVerde" parent="ArbustoVerde" instance=ExtResource("5_arbusto_verde")]
+
+[node name="PedraAmarela" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
+
+[node name="PedraAmarela" parent="PedraAmarela" instance=ExtResource("6_pedra_amarela")]
+
+[node name="Ponte" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 0)
+
+[node name="Ponte" parent="Ponte" instance=ExtResource("8_ponte")]

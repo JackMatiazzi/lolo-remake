@@ -49,5 +49,6 @@ position = Vector2(120, 20)
 shape = SubResource("RectangleShape2D_iy5hv")
 
 [node name="tutorial" parent="." unique_id=734888147 instance=ExtResource("9_tut")]
+visible = false
 
 [connection signal="body_entered" from="Sensor_Level" to="." method="_on_sensor_level_body_entered"]

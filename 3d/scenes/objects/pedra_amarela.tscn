@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/models/props/pedra_amarela.glb" id="1_modelo"]
+
+[sub_resource type="BoxShape3D" id="shape_pedra_amarela"]
+size = Vector3(1.9, 1.15, 1.7)
+
+[node name="PedraAmarela" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.445, 0)
+shape = SubResource("shape_pedra_amarela")
+
+[node name="Modelo" parent="." instance=ExtResource("1_modelo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.02, 0)

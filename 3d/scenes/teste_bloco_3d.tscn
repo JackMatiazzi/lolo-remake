@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Texture2D" path="res://3d/assets/textures_3d/parede.png" id="1_texture"]
+[ext_resource type="Script" path="res://3d/scripts/mapa_3d.gd" id="2_script"]
+
+[sub_resource type="StandardMaterial3D" id="Material_parede"]
+texture_filter = 0
+albedo_texture = ExtResource("1_texture")
+roughness = 1.0
+uv1_scale = Vector3(3, 2, 1)
+
+[sub_resource type="BoxMesh" id="Box_bloco"]
+material = SubResource("Material_parede")
+size = Vector3(2, 2, 2)
+
+[sub_resource type="Environment" id="Environment_teste"]
+background_mode = 1
+background_color = Color(0.12, 0.15, 0.2, 1)
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.65
+tonemap_mode = 0
+
+[node name="TesteBloco3D" type="Node3D"]
+script = ExtResource("2_script")
+
+[node name="Bloco" type="MeshInstance3D" parent="."]
+mesh = SubResource("Box_bloco")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+position = Vector3(4, 3.265986, 4)
+rotation = Vector3(-0.523599, 0.785398, 0)
+projection = 1
+current = true
+size = 4.8
+
+[node name="Luz" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-45, -30, 0)
+light_energy = 0.85
+
+[node name="Ambiente" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_teste")

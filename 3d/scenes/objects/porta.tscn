@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/models/props/porta.glb" id="1_modelo"]
+[ext_resource type="Script" path="res://3d/scripts/porta.gd" id="2_script"]
+
+[sub_resource type="BoxShape3D" id="shape_porta"]
+size = Vector3(2.0, 2.0, 0.8)
+
+[sub_resource type="BoxShape3D" id="shape_area_vitoria"]
+size = Vector3(2.0, 2.0, 1.6)
+
+[node name="Porta" type="StaticBody3D" groups=["portas"]]
+script = ExtResource("2_script")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("shape_porta")
+
+[node name="Modelo" parent="." instance=ExtResource("1_modelo")]
+
+[node name="AreaVitoria" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaVitoria"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("shape_area_vitoria")

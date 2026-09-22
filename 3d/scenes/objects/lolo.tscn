@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b1c6sts0ipd5w"]
+
+[ext_resource type="PackedScene" uid="uid://c8h38vkcojtor" path="res://assets/models/lolo/lolo.glb" id="1_modelo"]
+[ext_resource type="Script" uid="uid://d1o65qiaev50t" path="res://3d/scripts/lolo.gd" id="2_script"]
+
+[sub_resource type="SphereShape3D" id="shape_lolo"]
+radius = 0.8
+
+[node name="Lolo" type="CharacterBody3D" unique_id=1352953869 groups=["jogador"]]
+script = ExtResource("2_script")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=739377878]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("shape_lolo")
+
+[node name="Modelo" parent="." unique_id=19689180 instance=ExtResource("1_modelo")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="CameraPrimeiraPessoa" type="Camera3D" parent="." unique_id=2031746420]
+transform = Transform3D(1, 0, 0, 0, 0.8246634, 0.5656238, 0, -0.5656238, 0.8246634, 0, 2.6700335, 1.16605)
+fov = 105.0
+
+[node name="IdleTimer" type="Timer" parent="." unique_id=236334168]
+wait_time = 20.0
+one_shot = true

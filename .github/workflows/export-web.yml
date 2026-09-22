@@ -1,0 +1,37 @@
+name: Export Web build
+
+on:
+  push:
+    branches: [main]
+
+env:
+  GODOT_VERSION: 4.7.2
+
+jobs:
+  export-web:
+    name: Web export
+    runs-on: ubuntu-24.04
+    container:
+      image: barichello/godot-ci:4.7.2-stable
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Setup export templates
+        run: |
+          mkdir -v -p ~/.local/share/godot/export_templates/
+          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+
+      - name: Web build
+        run: |
+          mkdir -v -p build/web
+          godot --headless --verbose --export-release "Web" "$(readlink -f build)/web/index.html"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: lolo-remake-web-${{ github.sha }}
+          path: build/web
+          retention-days: 14

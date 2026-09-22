@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmhifjiv6bemw"]
+
+[ext_resource type="PackedScene" uid="uid://dgup5vb62jp4q" path="res://assets/models/props/ponte.glb" id="1_modelo"]
+
+[sub_resource type="BoxShape3D" id="shape_ponte"]
+size = Vector3(2, 0.3, 1.5)
+
+[node name="Ponte" type="StaticBody3D" groups=["pontes"] unique_id=1023754271]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1368408619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("shape_ponte")
+
+[node name="Modelo" parent="." unique_id=624130001 instance=ExtResource("1_modelo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.725, 0)
