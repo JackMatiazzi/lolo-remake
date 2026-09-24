@@ -9,6 +9,7 @@ extends CharacterBody3D
 @onready var ovo: MeshInstance3D = $Ovo
 @onready var tempo_ovo: Timer = $TempoOvo
 @onready var grid_map: GridMap = get_node_or_null(grid_map_path)
+@onready var voo: AudioStreamPlayer = $voo
 
 var jogador: Node3D
 var em_ovo := false
@@ -40,6 +41,7 @@ func tomar_tiro(direcao: Vector3) -> void:
 	if saindo:
 		return
 	if em_ovo:
+		voo.play()
 		_sumir(direcao)
 	else:
 		em_ovo = true

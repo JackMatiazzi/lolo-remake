@@ -2,6 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://c8h38vkcojtor" path="res://assets/models/lolo/lolo.glb" id="1_modelo"]
 [ext_resource type="Script" uid="uid://d1o65qiaev50t" path="res://3d/scripts/lolo.gd" id="2_script"]
+[ext_resource type="AudioStream" uid="uid://3q0ucbxsxfmr" path="res://3d/Sounds/Tiro_lolo.wav" id="3_ndcpa"]
+[ext_resource type="AudioStream" uid="uid://f1d2ulrqblu5" path="res://3d/Sounds/Pegar_coracao.wav" id="4_y3xra"]
+[ext_resource type="AudioStream" uid="uid://774o0xg3bav" path="res://3d/Sounds/Morte.wav" id="5_sd4g4"]
 
 [sub_resource type="SphereShape3D" id="shape_lolo"]
 radius = 0.8
@@ -23,3 +26,12 @@ fov = 105.0
 [node name="IdleTimer" type="Timer" parent="." unique_id=236334168]
 wait_time = 20.0
 one_shot = true
+
+[node name="tiro_lolo" type="AudioStreamPlayer" parent="." unique_id=735300715]
+stream = ExtResource("3_ndcpa")
+
+[node name="pegar_coracao" type="AudioStreamPlayer" parent="." unique_id=863055762]
+stream = ExtResource("4_y3xra")
+
+[node name="morte" type="AudioStreamPlayer" parent="." unique_id=831727368]
+stream = ExtResource("5_sd4g4")

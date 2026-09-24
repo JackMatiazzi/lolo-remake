@@ -8,6 +8,8 @@ signal joia_coletada
 @onready var area_coleta: Area3D = $AreaColeta
 @onready var colisao: CollisionShape3D = $CollisionShape3D
 @onready var malha_base: MeshInstance3D = $Modelo/Bau_Joia/Malha_Base_Bau
+@onready var open: AudioStreamPlayer = $Open
+@onready var coletado: AudioStreamPlayer = $Coletado
 
 var aberto := false
 var joia_foi_coletada := false
@@ -26,6 +28,7 @@ func abrir() -> void:
 
 	aberto = true
 	animacao.play("abrir")
+	open.play()
 	area_coleta.set_deferred("monitoring", true)
 	colisao.set_deferred("disabled", true)
 
@@ -36,6 +39,7 @@ func _ao_entrar_na_area(corpo: Node3D) -> void:
 
 	joia_foi_coletada = true
 	area_coleta.set_deferred("monitoring", false)
+	coletado.play()
 	_ocultar_joia()
 	joia_coletada.emit()
 
