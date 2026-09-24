@@ -17,6 +17,9 @@ const CENA_TIRO := preload("res://3d/scenes/objects/tiro_lolo.tscn")
 @onready var idle_timer: Timer = $IdleTimer
 @onready var camera_primeira_pessoa: Camera3D = $CameraPrimeiraPessoa
 @onready var grid_map: GridMap = get_node_or_null(grid_map_path)
+@onready var tiro_lolo: AudioStreamPlayer = $tiro_lolo
+@onready var pegar_coracao: AudioStreamPlayer = $pegar_coracao
+@onready var morte: AudioStreamPlayer = $morte
 
 var esta_movendo := false
 var em_primeira_pessoa := false
@@ -137,11 +140,13 @@ func executar_morte() -> void:
 	morreu = true
 	esta_movendo = true
 	anim.play("die")
+	morte.play()
 	await anim.animation_finished
 	GameMaster._ao_morrer_3d()
 
 func ganhar_tiros(quantidade: int) -> void:
 	tiros_disponiveis += quantidade
+	pegar_coracao.play()
 	atualizar_hud_tiros()
 
 func atualizar_hud_tiros() -> void:
@@ -156,6 +161,7 @@ func disparar() -> void:
 	var tiro := CENA_TIRO.instantiate() as TiroLolo
 	get_tree().current_scene.add_child(tiro)
 	# o tiro sai na frente do corpo
+	tiro_lolo.play()
 	tiro.global_position = global_position \
 		+ Vector3.UP * altura_saida_tiro \
 		+ ultima_direcao * distancia_saida_tiro
