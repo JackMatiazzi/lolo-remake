@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://b5xr5u4iyqwc7"]
 
 [ext_resource type="PackedScene" uid="uid://d12hyrlpfu21v" path="res://3d/scenes/levels/mapa_base.tscn" id="1_base"]
-[ext_resource type="PackedScene" path="res://3d/scenes/objects/bau.tscn" id="2_mo5o1"]
-[ext_resource type="PackedScene" path="res://3d/scenes/objects/coracao.tscn" id="3_t4056"]
+[ext_resource type="PackedScene" uid="uid://trmikdx06gm5" path="res://3d/scenes/objects/gol.tscn" id="2_cngfy"]
+[ext_resource type="PackedScene" uid="uid://bmlneotw3bd05" path="res://3d/scenes/objects/bau.tscn" id="2_mo5o1"]
+[ext_resource type="PackedScene" uid="uid://bncijvxwgi7jb" path="res://3d/scenes/objects/coracao.tscn" id="3_t4056"]
 [ext_resource type="PackedScene" path="res://3d/scenes/objects/esmeralda.tscn" id="4_cngfy"]
 [ext_resource type="PackedScene" path="res://3d/scenes/objects/porta.tscn" id="5_t4056"]
+[ext_resource type="AudioStream" uid="uid://cgk2py57fv4a5" path="res://3d/assets/Sounds/Musica_tema.wav" id="7_ndcwk"]
 
 [node name="Mapa3D" unique_id=636684292 instance=ExtResource("1_base")]
 
@@ -19,24 +21,34 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.3
 [node name="Lolo" parent="." index="4" unique_id=1121062300]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, -1)
 
-[node name="Bau" parent="." index="6" unique_id=462815222 instance=ExtResource("2_mo5o1")]
+[node name="Gol" parent="." index="5" unique_id=673053896 instance=ExtResource("2_cngfy")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -12.881458, 2.519238, -5.0211506)
+
+[node name="Gol2" parent="." index="6" unique_id=1715679594 instance=ExtResource("2_cngfy")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.0449986, 2.519, -20.844452)
+
+[node name="Bau" parent="." index="8" unique_id=462815222 instance=ExtResource("2_mo5o1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2, -11)
 
-[node name="Coracao" parent="." index="7" unique_id=111042887 instance=ExtResource("3_t4056")]
+[node name="Coracao" parent="." index="9" unique_id=111042887 instance=ExtResource("3_t4056")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2, -1)
 
-[node name="Coracao2" parent="." index="8" unique_id=616588029 instance=ExtResource("3_t4056")]
+[node name="Coracao2" parent="." index="10" unique_id=616588029 instance=ExtResource("3_t4056")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -5)
 
-[node name="Coracao3" parent="." index="9" unique_id=1289158092 instance=ExtResource("3_t4056")]
+[node name="Coracao3" parent="." index="11" unique_id=1289158092 instance=ExtResource("3_t4056")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, -19)
 
-[node name="Coracao4" parent="." index="10" unique_id=310647444 instance=ExtResource("3_t4056")]
+[node name="Coracao4" parent="." index="12" unique_id=310647444 instance=ExtResource("3_t4056")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 2, -19)
 da_tiro_magico = true
 
-[node name="Esmeralda" parent="." index="11" unique_id=752649338 instance=ExtResource("4_cngfy")]
+[node name="Esmeralda" parent="." index="13" unique_id=752649338 instance=ExtResource("4_cngfy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -3)
 
-[node name="Porta" parent="." index="12" unique_id=1555205328 instance=ExtResource("5_t4056")]
+[node name="Porta" parent="." index="14" unique_id=1555205328 instance=ExtResource("5_t4056")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, -22)
+
+[node name="Musica" type="AudioStreamPlayer3D" parent="." index="15" unique_id=760921844]
+stream = ExtResource("7_ndcwk")
+autoplay = true

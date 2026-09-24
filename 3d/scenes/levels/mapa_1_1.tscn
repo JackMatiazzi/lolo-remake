@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://ck3m6vo66iq5x"]
 
 [ext_resource type="PackedScene" uid="uid://d12hyrlpfu21v" path="res://3d/scenes/levels/mapa_base.tscn" id="1_base"]
-[ext_resource type="PackedScene" path="res://3d/scenes/objects/bau.tscn" id="2_bau"]
-[ext_resource type="PackedScene" path="res://3d/scenes/objects/coracao.tscn" id="3_coracao"]
+[ext_resource type="PackedScene" uid="uid://bmlneotw3bd05" path="res://3d/scenes/objects/bau.tscn" id="2_bau"]
+[ext_resource type="PackedScene" uid="uid://bncijvxwgi7jb" path="res://3d/scenes/objects/coracao.tscn" id="3_coracao"]
 [ext_resource type="PackedScene" path="res://3d/scenes/objects/porta.tscn" id="4_porta"]
 [ext_resource type="PackedScene" path="res://3d/scenes/objects/snakey.tscn" id="5_snakey"]
+[ext_resource type="AudioStream" uid="uid://cgk2py57fv4a5" path="res://3d/assets/Sounds/Musica_tema.wav" id="6_icn5y"]
 
 [node name="Mapa3D2" unique_id=728564800 instance=ExtResource("1_base")]
 
@@ -15,7 +16,7 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="Camera3D" parent="." index="1" unique_id=1909840237]
-transform = Transform3D(0.96592575, 7.450581e-09, 0.258819, -0.22414385, 0.49999997, 0.83651626, -0.12940949, -0.8660253, 0.48296285, 0.93185234, 16.05171, -6.1966414)
+transform = Transform3D(0.9999999, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, -1.3846512, 20, -9.9734535)
 
 [node name="Lolo" parent="." index="4" unique_id=1121062300]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -13, 2, -11)
@@ -35,3 +36,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -22)
 
 [node name="Snakey" parent="." index="10" unique_id=1000698300 instance=ExtResource("5_snakey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -11)
+
+[node name="Musica" type="AudioStreamPlayer3D" parent="." index="11" unique_id=638501621]
+stream = ExtResource("6_icn5y")
+autoplay = true

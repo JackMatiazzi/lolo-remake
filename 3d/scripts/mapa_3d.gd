@@ -52,13 +52,15 @@ func _ao_coletar_coracao(da_tiro_magico: bool = false) -> void:
 
 	if coracoes_restantes == 0:
 		abrir_baus()
+		get_tree().call_group("inimigo", "acordar")
 
 
 func abrir_baus() -> void:
 	for bau in _nos_do_mapa("baus"):
 		bau.abrir()
 
-
 func _ao_coletar_joia() -> void:
+	get_tree().call_group("inimigo", "queue_free")
+	$Musica.stop()
 	for porta in _nos_do_mapa("portas"):
 		porta.abrir()
