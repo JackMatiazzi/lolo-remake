@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://oetfekw8h6ep"]
+
+[ext_resource type="Script" uid="uid://bnfbwjofg13br" path="res://3d/scripts/tiro_gol.gd" id="1_jgf5j"]
+[ext_resource type="Texture2D" uid="uid://drdfm5ac68cfu" path="res://assets/sprites/Enemies & Objects.png" id="2_u17hr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pxqgl"]
+radius = 0.3857422
+height = 1.3289795
+
+[node name="TiroGol" type="Area3D" unique_id=1576061547]
+script = ExtResource("1_jgf5j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1143933969]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 4.8102806e-09, -0.11004639)
+shape = SubResource("CapsuleShape3D_pxqgl")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=272432362]
+transform = Transform3D(-4.371139e-07, 0, -10, 0, 10, 0, 10, 0, -4.371139e-07, 0, 0, 0)
+texture = ExtResource("2_u17hr")
+region_enabled = true
+region_rect = Rect2(16, 320, 16, 16)
+
+[node name="Sprite3D2" type="Sprite3D" parent="." unique_id=204111165]
+transform = Transform3D(-4.371139e-07, -10, 4.371139e-07, 0, -4.371139e-07, -10, 10, -4.371139e-07, 1.9106854e-14, 0, 0, 0)
+texture = ExtResource("2_u17hr")
+region_enabled = true
+region_rect = Rect2(16, 320, 16, 16)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

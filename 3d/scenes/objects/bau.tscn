@@ -1,25 +1,33 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3 uid="uid://bmlneotw3bd05"]
 
-[ext_resource type="PackedScene" path="res://assets/models/props/bau.glb" id="1_modelo"]
-[ext_resource type="Script" path="res://3d/scripts/bau.gd" id="2_script"]
+[ext_resource type="PackedScene" uid="uid://buyowufqqymom" path="res://assets/models/props/bau.glb" id="1_modelo"]
+[ext_resource type="Script" uid="uid://bxiipmr2mdhva" path="res://3d/scripts/bau.gd" id="2_script"]
+[ext_resource type="AudioStream" uid="uid://bk41fvxg563vy" path="res://3d/assets/Sounds/Pegar_perola.wav" id="3_16hpu"]
+[ext_resource type="AudioStream" uid="uid://bc0i3g2kbctdd" path="res://3d/assets/Sounds/Abrir_bau.wav" id="4_hoeln"]
 
 [sub_resource type="BoxShape3D" id="shape_bau"]
-size = Vector3(1.6, 1.0, 1.3)
+size = Vector3(1.6, 1, 1.3)
 
 [sub_resource type="BoxShape3D" id="shape_area_bau"]
 size = Vector3(2.2, 1.5, 1.9)
 
-[node name="Bau" type="StaticBody3D" groups=["baus"]]
+[node name="Bau" type="StaticBody3D" unique_id=1141615704 groups=["baus"]]
 script = ExtResource("2_script")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=587784040]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("shape_bau")
 
-[node name="Modelo" parent="." instance=ExtResource("1_modelo")]
+[node name="Modelo" parent="." unique_id=699096843 instance=ExtResource("1_modelo")]
 
-[node name="AreaColeta" type="Area3D" parent="."]
+[node name="AreaColeta" type="Area3D" parent="." unique_id=1712888614]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaColeta"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaColeta" unique_id=492155899]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 shape = SubResource("shape_area_bau")
+
+[node name="SomColetar" type="AudioStreamPlayer3D" parent="." unique_id=321468328]
+stream = ExtResource("3_16hpu")
+
+[node name="SomAbrir" type="AudioStreamPlayer3D" parent="." unique_id=2010802204]
+stream = ExtResource("4_hoeln")

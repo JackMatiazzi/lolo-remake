@@ -1,3 +1,4 @@
+class_name InimigoBase
 extends CharacterBody3D
 
 @export var tamanho_celula := 2.0
@@ -5,10 +6,11 @@ extends CharacterBody3D
 @export var duracao_ovo := 7.0
 @export var grid_map_path := NodePath("../GridMap")
 
-@onready var visual: Node3D = $Visual
+@onready var visual: Node3D = get_node_or_null("Visual") if has_node("Visual") else get_node_or_null("Armação")
 @onready var ovo: MeshInstance3D = $Ovo
 @onready var tempo_ovo: Timer = $TempoOvo
 @onready var grid_map: GridMap = get_node_or_null(grid_map_path)
+@onready var som_voar: AudioStreamPlayer3D = $SomVoar
 
 var jogador: Node3D
 var em_ovo := false
@@ -22,7 +24,7 @@ func _ready() -> void:
 	tempo_ovo.timeout.connect(_voltar_ao_normal)
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if em_ovo:
 		return
 	if not is_instance_valid(jogador):
@@ -62,9 +64,10 @@ func _sumir(direcao: Vector3) -> void:
 	remove_from_group("empurravel")
 	collision_layer = 0
 	collision_mask = 0
+	som_voar.play()
 	var rumo := direcao.normalized() if direcao.length_squared() > 0.01 else Vector3.FORWARD
 	var tween := create_tween()
-	tween.tween_property(self, "global_position", global_position + rumo * 6.0 + Vector3.UP, 0.25)
+	tween.tween_property(self, "global_position", global_position + rumo * 20.0 + Vector3.UP, 0.25)
 	tween.finished.connect(queue_free)
 
 

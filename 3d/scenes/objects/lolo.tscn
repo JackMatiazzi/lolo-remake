@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://c8h38vkcojtor" path="res://assets/models/lolo/lolo.glb" id="1_modelo"]
 [ext_resource type="Script" uid="uid://d1o65qiaev50t" path="res://3d/scripts/lolo.gd" id="2_script"]
+[ext_resource type="AudioStream" uid="uid://3q0ucbxsxfmr" path="res://3d/assets/Sounds/Tiro_lolo.wav" id="3_amjek"]
+[ext_resource type="AudioStream" uid="uid://774o0xg3bav" path="res://3d/assets/Sounds/Morte.wav" id="4_ndcpa"]
 
 [sub_resource type="SphereShape3D" id="shape_lolo"]
 radius = 0.8
@@ -23,3 +25,9 @@ fov = 105.0
 [node name="IdleTimer" type="Timer" parent="." unique_id=236334168]
 wait_time = 20.0
 one_shot = true
+
+[node name="SomTiro" type="AudioStreamPlayer3D" parent="." unique_id=585209195]
+stream = ExtResource("3_amjek")
+
+[node name="SomMorte" type="AudioStreamPlayer3D" parent="." unique_id=269018942]
+stream = ExtResource("4_ndcpa")

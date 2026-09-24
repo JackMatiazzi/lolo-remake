@@ -17,6 +17,8 @@ const CENA_TIRO := preload("res://3d/scenes/objects/tiro_lolo.tscn")
 @onready var idle_timer: Timer = $IdleTimer
 @onready var camera_primeira_pessoa: Camera3D = $CameraPrimeiraPessoa
 @onready var grid_map: GridMap = get_node_or_null(grid_map_path)
+@onready var som_tiro: AudioStreamPlayer3D = $SomTiro
+@onready var som_morte: AudioStreamPlayer3D = $SomMorte
 
 var esta_movendo := false
 var em_primeira_pessoa := false
@@ -137,6 +139,7 @@ func executar_morte() -> void:
 	morreu = true
 	esta_movendo = true
 	anim.play("die")
+	som_morte.play()
 	await anim.animation_finished
 	GameMaster._ao_morrer_3d()
 
@@ -163,6 +166,7 @@ func disparar() -> void:
 
 	tiros_disponiveis -= 1
 	atualizar_hud_tiros()
+	som_tiro.play()
 
 func bloco_bloqueia(destino: Vector3) -> bool:
 	if grid_map == null or grid_map.mesh_library == null:

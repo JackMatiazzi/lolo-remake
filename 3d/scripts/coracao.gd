@@ -6,9 +6,9 @@ signal coletado(da_tiro_magico: bool)
 
 @onready var animacao: AnimationPlayer = $Modelo/AnimationPlayer
 @onready var colisao: CollisionShape3D = $CollisionShape3D
+@onready var som_coletar: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 var foi_coletado := false
-
 
 func _ready() -> void:
 	body_entered.connect(_ao_entrar)
@@ -23,7 +23,10 @@ func _ao_entrar(corpo: Node3D) -> void:
 		return
 
 	foi_coletado = true
+	$Modelo.hide()
 	set_deferred("monitoring", false)
 	colisao.set_deferred("disabled", true)
 	coletado.emit(da_tiro_magico)
+	som_coletar.play()
+	await som_coletar.finished
 	queue_free()
